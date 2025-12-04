@@ -2,18 +2,18 @@
 
 import { motion } from "framer-motion"
 
-export default function AboutHero() {
+export default function ContactHero() {
   return (
     <section className="relative w-full h-96 mt-20 overflow-hidden flex items-center justify-center">
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: "url(/placeholder.svg?height=400&width=1200&query=upscale-bar-interior)",
+          backgroundImage: "url(/placeholder.svg?height=400&width=1200&query=nightclub-contact)",
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-r from-black via-black/50to-transparent" />
 
       <motion.div
         initial={{ y: 20, opacity: 0 }}
@@ -21,7 +21,7 @@ export default function AboutHero() {
         transition={{ duration: 0.8 }}
         className="relative text-center"
       >
-        <h1 className="text-6xl font-bold text-white neon-glow">About The Pearl</h1>
+        <h1 className="text-6xl font-bold text-white neon-glow">Contact & Reservations</h1>
       </motion.div>
     </section>
   )

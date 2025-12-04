@@ -53,7 +53,7 @@ export default function EventsList() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="bg-gradient-to-r from-gray-900 to-black border border-orange-500/30 p-8 rounded-lg hover:border-orange-500 transition group"
+              className="bg-linear-to-r from-gray-900 to-black border border-orange-500/30 p-8 rounded-lg hover:border-orange-500 transition group"
             >
               <div className="grid md:grid-cols-4 gap-6">
                 <div>
