@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { MdEmail } from "react-icons/md";
 import { FaPhoneAlt, FaLinkedin, FaFacebook } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
 import { Instagram, ChevronDown, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,180 +14,142 @@ export default function Navbar() {
   const [mobileEvent, setMobileEvent] = useState(false);
 
   return (
-    <nav className="w-full shadow-lg overflow-x-hidden">
-      {/* ---------- TOP BAR ---------- */}
+    <nav className="w-full relative z-9999 bg-[#020101]">
+
+      {/* TOP BAR */}
       <div className="w-full bg-gray-100 text-gray-800 text-sm border-b border-orange-500/20">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between py-3 sm:py-0 sm:h-10">
-            {/* Left: Email + Phone */}
+
+            {/* Left: Phone & Email */}
             <div className="flex items-center gap-4 sm:gap-6 mb-2 sm:mb-0">
-              <a
-                href="tel:61410036729"
-                className="flex items-center gap-1.5 hover:text-[#E86C60] transition-colors duration-200"
-              >
+              <a href="tel:61410036729" className="flex items-center gap-1.5 hover:text-[#E86C60]">
                 <FaPhoneAlt size={14} className="text-[#E86C60]" />
                 <span className="text-xs sm:text-sm">61410036729</span>
               </a>
-              <a
-                href="mailto:thepearl149@hotmail.com"
-                className="flex items-center gap-1.5 hover:text-[#E86C60] transition-colors duration-200"
-              >
+
+              <a href="mailto:thepearl149@hotmail.com" className="flex items-center gap-1.5 hover:text-[#E86C60]">
                 <MdEmail size={14} className="text-[#E86C60]" />
                 <span className="text-xs sm:text-sm">thepearl149@hotmail.com</span>
               </a>
             </div>
 
-            {/* Right: Social Icons */}
+            {/* Social Icons */}
             <div className="flex items-center gap-3">
-              <a 
-                href="#" 
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#4E69A2] flex items-center justify-center text-white hover:opacity-90 transition-opacity"
-                aria-label="Facebook"
-              >
-                <FaFacebook size={14} className="sm:w-4 sm:h-4" />
+              <a href="#" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#4E69A2] flex items-center justify-center text-white">
+                <FaFacebook size={14} />
               </a>
-              <a 
-                href="#" 
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-linear-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white hover:opacity-90 transition-opacity"
-                aria-label="Instagram"
-              >
-                <Instagram size={14} className="sm:w-4 sm:h-4" />
+              <a href="#" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white bg-linear-to-br from-purple-600 to-pink-600">
+                <Instagram size={14} />
               </a>
-              <a 
-                href="#" 
-                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-white hover:opacity-90 transition-opacity"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={14} className="sm:w-4 sm:h-4" />
+              <a href="#" className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-white">
+                <FaLinkedin size={14} />
               </a>
             </div>
+
           </div>
         </div>
       </div>
 
-      {/* ---------- MAIN NAVBAR ---------- */}
-      <div className="bg-[#020101] py-1 sm:py-2">
+      {/* MAIN NAV */}
+      <div className="py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
           <div className="flex items-center justify-between">
-            {/* Logo with increased width */}
+
+            {/* LOGO */}
             <Link href="/" className="shrink-0">
-              <Image
-                src="/logo-pearl.png"
-                width={120}  
-                height={60}  
-                alt="The Pearl Logo"
-                className="object-contain hover:opacity-90 transition-opacity"
-                priority
-              />
+              <div className="w-36 sm:w-40 lg:w-32 py-2">
+                <Image
+                  src="/logo-pearl.png"
+                  alt="The Pearl Logo"
+                  width={400}
+                  height={100}
+                  className="object-contain w-full h-auto"
+                />
+              </div>
             </Link>
 
-            {/* Desktop Menu */}
-            <div className="hidden lg:flex items-center space-x-1 xl:space-x-2 mx-auto">
-              <Link 
-                href="/" 
-                className="px-4 py-2 text-white hover:text-[#E86C60] font-medium transition-colors duration-200 rounded-md hover:bg-white/5"
-              >
+            {/* DESKTOP MENU */}
+            <div className="hidden lg:flex items-center space-x-12 mx-auto">
+
+              <Link href="/" className="text-white hover:text-[#E86C60] transition font-medium text-lg">
                 Home
               </Link>
-              <Link 
-                href="/about" 
-                className="px-4 py-2 text-white hover:text-[#E86C60] font-medium transition-colors duration-200 rounded-md hover:bg-white/5"
-              >
+
+              <Link href="/about" className="text-white hover:text-[#E86C60] transition font-medium text-lg">
                 About Us
               </Link>
-              <Link 
-                href="/gallery" 
-                className="px-4 py-2 text-white hover:text-[#E86C60] font-medium transition-colors duration-200 rounded-md hover:bg-white/5"
-              >
+
+              <Link href="/gallery" className="text-white hover:text-[#E86C60] transition font-medium text-lg">
                 Gallery
               </Link>
 
-              {/* Desktop Dropdown */}
+              {/* DESKTOP DROPDOWN */}
               <div
                 className="relative"
                 onMouseEnter={() => setEventMenu(true)}
                 onMouseLeave={() => setEventMenu(false)}
               >
-                <button className="px-4 py-2 text-white hover:text-[#E86C60] font-medium transition-colors duration-200 rounded-md hover:bg-white/5 flex items-center gap-1">
-                  Upcoming Events <ChevronDown size={16} className={`transition-transform ${eventMenu ? 'rotate-180' : ''}`} />
+                <button className="flex items-center gap-1 text-white hover:text-[#E86C60] transition font-medium text-lg">
+                  Upcoming Events
+                  <ChevronDown size={16} className={`${eventMenu ? "rotate-180" : ""} transition`} />
                 </button>
 
                 <AnimatePresence>
                   {eventMenu && (
                     <motion.div
-                      initial={{ opacity: 0, y: -10 }}
+                      initial={{ opacity: 0, y: 8 }}
                       animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
+                      exit={{ opacity: 0, y: 8 }}
                       transition={{ duration: 0.2 }}
-                      className="absolute top-full left-0 pt-3 z-50"
+                      className="absolute left-0 top-10 z-9999"
                     >
-                      <div className="bg-white border border-gray-200 shadow-xl rounded-lg py-2 min-w-[220px]">
-                        <Link
-                          href="/events/bands"
-                          className="block px-5 py-3 text-gray-800 hover:text-[#E86C60] font-medium hover:bg-orange-50 transition-colors duration-200"
-                        >
+                      <div className="bg-white shadow-xl rounded-lg py-2 min-w-[220px] border">
+                        <Link href="/events/bands" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                           Bands
                         </Link>
-                        <Link
-                          href="/events/cocktail-carnival"
-                          className="block px-5 py-3 text-gray-800 hover:text-[#E86C60] font-medium hover:bg-orange-50 transition-colors duration-200"
-                        >
+                        <Link href="/events/cocktail-carnival" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                           Cocktail Carnival
                         </Link>
-                        <Link
-                          href="/events/beach-parties"
-                          className="block px-5 py-3 text-gray-800 hover:text-[#E86C60] font-medium hover:bg-orange-50 transition-colors duration-200"
-                        >
+                        <Link href="/events/beach-parties" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                           Beach Parties
                         </Link>
-                        <Link
-                          href="/events/live-music"
-                          className="block px-5 py-3 text-gray-800 hover:text-[#E86C60] font-medium hover:bg-orange-50 transition-colors duration-200"
-                        >
+                        <Link href="/events/live-music" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                           Live Music
                         </Link>
-                        <Link
-                          href="/events/dj-night"
-                          className="block px-5 py-3 text-gray-800 hover:text-[#E86C60] font-medium hover:bg-orange-50 transition-colors duration-200"
-                        >
+                        <Link href="/events/dj-night" className="block px-4 py-2 text-gray-800 hover:bg-gray-100">
                           DJ Night
                         </Link>
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
+
               </div>
 
-              <Link 
-                href="/contact" 
-                className="px-4 py-2 text-white hover:text-[#E86C60] font-medium transition-colors duration-200 rounded-md hover:bg-white/5"
-              >
+              <Link href="/contact" className="text-white hover:text-[#E86C60] transition font-medium text-lg">
                 Contact
               </Link>
             </div>
 
-            {/* CTA Button for Desktop */}
-            <div className="hidden lg:block shrink-0">
-              <Link
-                href="/book-now"
-                className="ml-4 px-6 py-3 bg-linear-to-r from-[#E86C60] to-orange-500 text-white font-semibold rounded-full hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 hover:scale-105"
-              >
+            {/* DESKTOP CTA */}
+            <div className="hidden lg:block">
+              <Link href="/book-now" className="px-5 py-2 bg-[#E86C60] text-white font-semibold rounded-md hover:bg-[#d05a50] transition">
                 Book Now
               </Link>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 text-white hover:text-[#E86C60] transition-colors"
-              aria-label="Toggle menu"
-            >
+            {/* MOBILE MENU BUTTON */}
+            <button className="lg:hidden p-2 text-white" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
+
           </div>
+
         </div>
 
-        {/* ---------- Mobile Menu ---------- */}
+        {/* MOBILE MENU */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -195,112 +157,82 @@ export default function Navbar() {
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
+              className="lg:hidden bg-[#0f0f0f] border-t border-gray-800"
             >
-              <div className="px-4 sm:px-6 pt-6 pb-8 space-y-1 bg-[#0f0f0f] border-t border-gray-800">
-                <Link
-                  href="/"
-                  className="block py-3 px-4 text-white hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
+
+              <div className="px-4 pt-6 pb-8 space-y-1">
+
+                <Link href="/" className="block text-white py-2 text-sm hover:text-[#E86C60]">
                   Home
                 </Link>
-                <Link
-                  href="/about"
-                  className="block py-3 px-4 text-white hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
+
+                <Link href="/about" className="block text-white py-2 text-sm hover:text-[#E86C60]">
                   About Us
                 </Link>
-                <Link
-                  href="/gallery"
-                  className="block py-3 px-4 text-white hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
+
+                <Link href="/gallery" className="block text-white py-2 text-sm hover:text-[#E86C60]">
                   Gallery
                 </Link>
 
-                {/* Mobile Dropdown */}
-                <div className="space-y-1">
+                {/* MOBILE DROPDOWN */}
+                <div>
                   <button
                     onClick={() => setMobileEvent(!mobileEvent)}
-                    className="w-full flex items-center justify-between py-3 px-4 text-white hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
+                    className="w-full flex items-center justify-between text-white py-2 text-sm hover:text-[#E86C60]"
                   >
-                    <span>Upcoming Events</span>
-                    <ChevronDown 
-                      size={18} 
-                      className={`transition-transform duration-200 ${mobileEvent ? 'rotate-180' : ''}`} 
-                    />
+                    Upcoming Events
+                    <ChevronDown size={18} className={`${mobileEvent ? "rotate-180" : ""} transition`} />
                   </button>
 
-                  {mobileEvent && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      className="ml-4 pl-4 border-l border-gray-700 space-y-1"
-                    >
-                      <Link
-                        href="/events/bands"
-                        className="block py-2.5 px-4 text-gray-300 hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                        onClick={() => setIsOpen(false)}
+                  <AnimatePresence>
+                    {mobileEvent && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -8 }}
+                        className="ml-4 pl-4 border-l border-gray-700 space-y-1"
                       >
-                        Bands
-                      </Link>
-                      <Link
-                        href="/events/cocktail-carnival"
-                        className="block py-2.5 px-4 text-gray-300 hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Cocktail Carnival
-                      </Link>
-                      <Link
-                        href="/events/beach-parties"
-                        className="block py-2.5 px-4 text-gray-300 hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Beach Parties
-                      </Link>
-                      <Link
-                        href="/events/live-music"
-                        className="block py-2.5 px-4 text-gray-300 hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        Live Music
-                      </Link>
-                      <Link
-                        href="/events/dj-night"
-                        className="block py-2.5 px-4 text-gray-300 hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                        onClick={() => setIsOpen(false)}
-                      >
-                        DJ Night
-                      </Link>
-                    </motion.div>
-                  )}
+                        <Link href="/events/bands" className="block text-white py-2 text-sm hover:text-[#E86C60]">
+                          Bands
+                        </Link>
+                        <Link href="/events/cocktail-carnival" className="block text-white py-2 text-sm hover:text-[#E86C60]">
+                          Cocktail Carnival
+                        </Link>
+                        <Link href="/events/beach-parties" className="block text-white py-2 text-sm hover:text-[#E86C60]">
+                          Beach Parties
+                        </Link>
+                        <Link href="/events/live-music" className="block text-white py-2 text-sm hover:text-[#E86C60]">
+                          Live Music
+                        </Link>
+                        <Link href="/events/dj-night" className="block text-white py-2 text-sm hover:text-[#E86C60]">
+                          DJ Night
+                        </Link>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
-                <Link
-                  href="/contact"
-                  className="block py-3 px-4 text-white hover:text-[#E86C60] font-medium hover:bg-white/5 rounded-lg transition-colors"
-                  onClick={() => setIsOpen(false)}
-                >
+                <Link href="/contact" className="block text-white py-2 text-sm hover:text-[#E86C60]">
                   Contact
                 </Link>
 
-                {/* Mobile CTA Button */}
                 <div className="pt-4">
                   <Link
                     href="/book-now"
-                    className="block w-full text-center py-3.5 bg-linear-to-r from-[#E86C60] to-orange-500 text-white font-semibold rounded-lg hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 active:scale-95"
-                    onClick={() => setIsOpen(false)}
+                    className="block w-full text-center px-5 py-2 bg-[#E86C60] text-white font-semibold rounded-md hover:bg-[#d05a50] transition"
                   >
                     Book Now
                   </Link>
                 </div>
+
               </div>
+
             </motion.div>
           )}
         </AnimatePresence>
+
       </div>
+
     </nav>
   );
 }
