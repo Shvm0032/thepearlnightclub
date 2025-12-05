@@ -3,13 +3,15 @@ export const metadata = {
 }
 
 import GalleryHero from "../../components/gallery/GalleryHero"
-import ImageGallery from "../../components/gallery/ImageGallery"
+import GallerySection from "../../components/gallery/GallerySection"
+import GalleryVideoSection from "../../components/gallery/GalleryVideoSection"
 
 export default function GalleryPage() {
   return (
     <>
       <GalleryHero />
-      <ImageGallery />
+      <GalleryVideoSection/>
+      <GallerySection/>
     </>
   )
 }
