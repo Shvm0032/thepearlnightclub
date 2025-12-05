@@ -1,146 +1,209 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaMapMarkerAlt,
+  FaFacebookF,
+  FaTwitter,
+  FaLinkedinIn,
+  FaInstagram,
+} from "react-icons/fa";
 
 export default function ContactForm() {
-  const [submitted, setSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    setSubmitted(true)
-    setTimeout(() => setSubmitted(false), 3000)
-  }
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const validateEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!formData.name || !formData.email || !formData.message) {
+      alert("Please fill in all required fields!");
+      return;
+    }
+    if (!validateEmail(formData.email)) {
+      alert("Please enter a valid email!");
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSuccess(true);
+        setFormData({ name: "", email: "", phone: "", message: "" });
+      } else {
+        setSuccess(false);
+      }
+    } catch (error) {
+      console.error(error);
+      setSuccess(false);
+    }
+    setLoading(false);
+  };
 
   return (
-    <section className="py-20 px-4 bg-black">
-      <div className="max-w-2xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-4xl font-bold text-white mb-8 neon-glow">Get In Touch</h2>
+    <section className="w-full py-20 bg-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 px-6 lg:px-12">
 
-            <div className="space-y-6">
-              <div>
-                <p className="text-orange-500 font-bold mb-2">Phone</p>
-                <p className="text-gray-300">(614) 003-6729</p>
-              </div>
+        {/* LEFT – INFO BOXES */}
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h2 className="text-3xl font-bold mb-1">Contact Info</h2>
+          <div className="w-20 h-[3px] bg-red-500 mb-8"></div>
 
-              <div>
-                <p className="text-orange-500 font-bold mb-2">Email</p>
-                <p className="text-gray-300">thepearl149@hotmail.com</p>
-              </div>
+          <p className="text-gray-600 leading-relaxed mb-10">
+            Have a question or want to get in touch with us?
+            We’re here and ready to assist! At The Pearl, 
+            we value your inquiries, feedback, and suggestions.
+          </p>
 
-              <div>
-                <p className="text-orange-500 font-bold mb-2">Address</p>
-                <p className="text-gray-300">
-                  123 Pearl Street
-                  <br />
-                  Downtown District
-                  <br />
-                  [City], [State] 12345
-                </p>
-              </div>
+          {/* ICON BOXES */}
+          <div className="space-y-5">
 
-              <div>
-                <p className="text-orange-500 font-bold mb-4">Hours</p>
-                <p className="text-gray-300 mb-2">Wed - Thu: 9PM - 2AM</p>
-                <p className="text-gray-300 mb-2">Fri - Sat: 9PM - 4AM</p>
-                <p className="text-gray-300">Sun - Tue: Closed</p>
+            {/* Phone */}
+            <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
+              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+                <FaPhoneAlt />
               </div>
+              <p className="text-lg font-medium text-gray-700">61 410 036 729</p>
             </div>
-          </motion.div>
 
-          {/* Contact Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="space-y-4"
-          >
+            {/* Email */}
+            <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
+              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+                <FaEnvelope />
+              </div>
+              <p className="text-lg font-medium text-gray-700">thepearl149@hotmail.com</p>
+            </div>
+
+            {/* Location */}
+            <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
+              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+                <FaMapMarkerAlt />
+              </div>
+              <p className="text-lg font-medium text-gray-700">149 Waymoth St Adelaide 5000</p>
+            </div>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex gap-5 mt-8">
+            <a className="bg-blue-600 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
+              <FaFacebookF className="text-xl" />
+            </a>
+            <a className="bg-sky-400 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
+              <FaTwitter className="text-xl" />
+            </a>
+            <a className="bg-blue-700 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
+              <FaLinkedinIn className="text-xl" />
+            </a>
+            <a className="bg-black text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
+              <FaInstagram className="text-xl" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* RIGHT – FORM */}
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="bg-gray-100 rounded-xl shadow-lg p-10"
+        >
+          <h2 className="text-3xl font-bold">Get In Touch</h2>
+          <div className="w-24 h-[3px] bg-red-500 my-3"></div>
+
+          <p className="text-gray-600 mb-6">
+            Fill out the form below and our team will get back to you shortly.
+          </p>
+
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-white font-bold mb-2">Full Name</label>
+              <label className="block font-semibold mb-1">Name *</label>
               <input
                 type="text"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white"
-                placeholder="Your name"
-                required
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
               />
             </div>
 
             <div>
-              <label className="block text-white font-bold mb-2">Email</label>
+              <label className="block font-semibold mb-1">Email Address *</label>
               <input
                 type="email"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white"
-                placeholder="your@email.com"
-                required
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
               />
             </div>
 
             <div>
-              <label className="block text-white font-bold mb-2">Phone</label>
+              <label className="block font-semibold mb-1">Phone Number</label>
               <input
-                type="tel"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white"
-                placeholder="(555) 123-4567"
+                type="text"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
               />
             </div>
 
             <div>
-              <label className="block text-white font-bold mb-2">Event Type</label>
-              <select className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white">
-                <option>Private Event</option>
-                <option>Corporate Event</option>
-                <option>Birthday Party</option>
-                <option>Wedding Reception</option>
-                <option>Other</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-white font-bold mb-2">Number of Guests</label>
-              <input
-                type="number"
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white"
-                placeholder="Est. number of guests"
-              />
-            </div>
-
-            <div>
-              <label className="block text-white font-bold mb-2">Message</label>
+              <label className="block font-semibold mb-1">Message *</label>
               <textarea
-                className="w-full px-4 py-3 bg-gray-800/50 border border-gray-700 rounded focus:border-orange-500 focus:outline-none text-white h-24"
-                placeholder="Tell us about your event..."
+                name="message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
               />
             </div>
 
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-orange-500 hover:bg-orange-600 text-black font-bold rounded transition"
+              disabled={loading}
+              className="w-full bg-red-500 hover:bg-red-600 text-white text-lg font-semibold py-3 rounded-md transition"
             >
-              Send Inquiry
+              {loading ? "Sending..." : "Submit"}
             </button>
 
-            {submitted && (
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                className="text-green-400 text-center font-bold"
-              >
-                Thank you! We'll get back to you soon.
-              </motion.p>
+            {success === true && (
+              <p className="text-green-600 font-medium">Message sent successfully!</p>
             )}
-          </motion.form>
-        </div>
+            {success === false && (
+              <p className="text-red-600 font-medium">Something went wrong. Try again!</p>
+            )}
+          </form>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }
