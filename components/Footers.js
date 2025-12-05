@@ -5,7 +5,7 @@ import { FaPhoneAlt, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { Instagram } from "lucide-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-export default function Footer() {
+export default function Footers() {
   return (
     <footer className="bg-[#343353] text-gray-300 overflow-x-hidden box-border">
       {/* ---------- Top Footer: 4 Columns ---------- */}
