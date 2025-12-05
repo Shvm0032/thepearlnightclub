@@ -1,58 +1,81 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
+import { Play } from "lucide-react";
+import { useState } from "react";
 
 export default function OurStory() {
+  const [showVideo, setShowVideo] = useState(false);
+
   return (
-    <section className="py-20 px-4 bg-black">
-      <div className="max-w-4xl mx-auto">
+    <section className="w-full py-20 px-6 md:px-12 lg:px-20 bg-white">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+        {/* ------- LEFT SIDE : VIDEO THUMBNAIL ------- */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="mb-12"
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          className="relative w-full h-[350px] md:h-[420px] rounded-xl overflow-hidden shadow-lg"
         >
-          <h2 className="text-5xl font-bold text-white mb-8 neon-glow">Our Story</h2>
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            The Pearl was founded with a simple vision: to create a space where exceptional experiences come to life.
-            For years, we've been crafting unforgettable memories through carefully curated events, premium spirits, and
-            genuine hospitality.
-          </p>
-          <p className="text-gray-300 text-lg leading-relaxed mb-6">
-            Our name, The Pearl, reflects the rarity and value we bring to every moment. Like a pearl formed from the
-            friction of sand and shell, our venue has been refined through countless nights, conversations, and
-            celebrations. Each event, each cocktail, and each guest interaction has shaped us into what we are today.
-          </p>
-          <p className="text-gray-300 text-lg leading-relaxed">
-            We're not just a nightclub; we're a community hub where professionals network, friends celebrate, and
-            strangers become part of something special. Every corner of The Pearl tells a story, and we invite you to
-            become part of ours.
-          </p>
+          {!showVideo ? (
+            <>
+              <img
+                src="/about/storyvideobg.jpg" // change to your image
+                alt="Our Story Video"
+                className="w-full h-full object-cover rounded-xl"
+              />
+
+              <button
+                onClick={() => setShowVideo(true)}
+                className="absolute inset-0 flex items-center justify-center"
+              >
+                <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-xl hover:scale-110 transition">
+                  <Play size={38} className="text-red-500 ml-1" />
+                </div>
+              </button>
+            </>
+          ) : (
+            <iframe
+              className="w-full h-full rounded-xl"
+              src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1"
+              title="Our Story Video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          )}
         </motion.div>
 
+        {/* ------- RIGHT SIDE : CONTENT ------- */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="grid md:grid-cols-3 gap-8"
+          initial={{ opacity: 0, x: 40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
         >
-          {[
-            { number: "1000+", label: "Happy Guests" },
-            { number: "500+", label: "Events Hosted" },
-            { number: "50+", label: "Premium Cocktails" },
-          ].map((stat, idx) => (
-            <div
-              key={idx}
-              className="text-center p-6 border border-orange-500/30 rounded-lg hover:border-orange-500 transition"
-            >
-              <p className="text-4xl font-bold text-orange-500 neon-glow mb-2">{stat.number}</p>
-              <p className="text-gray-400">{stat.label}</p>
-            </div>
-          ))}
+          <h4 className="text-red-500 text-xl font-semibold mb-2">About Us!</h4>
+
+          <h2 className="text-5xl font-black mb-6">Our Story</h2>
+
+          <p className="text-black md:text-md leading-relaxed mb-4">
+            At The Pearl, we’re passionate about crafting experiences that transcend the ordinary.
+            From our carefully curated selection of spirits to our team of expert mixologists, each
+            element is meticulously designed to elevate your evenings.
+          </p>
+
+          <p className="text-black md:text-md leading-relaxed mb-4">
+            We believe in creating more than just drinks; we craft moments and memories that linger
+            long after the last sip. Whether it’s our themed events, live music sessions, or exclusive
+            gatherings, we strive to offer a vibrant, welcoming space for those seeking an exceptional
+            nightlife experience.
+          </p>
+
+          <p className="text-black md:text-md leading-relaxed">
+            Join us and become part of our spirited community at The Pearl. Cheers to unforgettable
+            nights! Our team is dedicated to crafting evenings filled with laughter, music that moves
+            your soul, and libations that awaken your senses.
+          </p>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
