@@ -1,51 +1,67 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section className="py-20 px-4 bg-black">
+    <section className="py-20 px-4 bg-[#1b1919]">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image */}
+
+          {/* LEFT — IMAGE */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="relative h-96"
+            className="relative"
           >
-            <div
-              className="absolute inset-0 bg-cover bg-center rounded-lg overflow-hidden"
-              style={{
-                backgroundImage: "url(/placeholder.svg?height=400&width=500&query=nightclub-interior)",
-              }}
+            <img
+              src="/home/about.jpg"   
+              alt="About The Pearl"
+              className="rounded-lg w-full h-[420px] object-cover"
             />
-            <div className="absolute inset-0 bg-linear-to-r from-orange-500/30 to-transparent" />
           </motion.div>
 
-          {/* Content */}
+          {/* RIGHT — CONTENT */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <p className="text-orange-500 font-bold text-sm uppercase tracking-wider mb-4">Know About Us</p>
-            <h2 className="text-5xl font-bold text-white mb-6 neon-glow">Who We Are</h2>
+            {/* Orange Line */}
+            <div className="flex items-center gap-4 mb-4">
+              <span className="w-16 h-[3px] bg-[#e86c60]"></span>
+              <p className="text-[#e86c60] font-semibold tracking-wider uppercase text-md">
+                Know About Us
+              </p>
+            </div>
+
+            <h2 className="text-5xl font-extrabold text-white mb-6 leading-tight">
+              Who We Are
+            </h2>
+
             <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              At The Pearl, we're passionate about crafting experiences that transcend the ordinary. From our carefully
-              curated selection of spirits to our team of expert mixologists, each element is meticulously designed to
-              elevate your evenings. We believe in creating more than just drinks; we craft moments and memories that
-              linger long after the last sip. Whether it's our themed events, live music sessions, or exclusive
-              gatherings, we strive to offer a vibrant, welcoming space for those seeking an exceptional nightlife
-              experience. Come join us and become part of our spirited community at The Pearl. Cheers to unforgettable
-              nights!
+              At The Pearl, we're passionate about crafting experiences that transcend
+              the ordinary. From our carefully curated selection of spirits to our team
+              of expert mixologists, each element is meticulously designed to elevate
+              your evenings.
+              <br /><br />
+              Whether it's our themed events, live music sessions, or exclusive
+              gatherings, we strive to offer a vibrant, welcoming space for those
+              seeking an exceptional nightlife experience.
+              <br /><br />
+              Cheers to unforgettable nights!
             </p>
+
+            {/* Button */}
             <Link
               href="/about"
-              className="inline-block px-8 py-3 border-2 border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-black font-bold rounded transition"
+              className="inline-block px-8 py-3 border-2 border-[#e86c60] 
+              text-[#e86c60] hover:bg-[#e86c60] hover:text-black 
+              font-bold rounded-md transition duration-300"
             >
               Know More
             </Link>
@@ -53,5 +69,5 @@ export default function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
