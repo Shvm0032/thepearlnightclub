@@ -1,28 +1,27 @@
-"use client"
-
-import { motion } from "framer-motion"
+"use client";
+import Image from "next/image";
 
 export default function GalleryHero() {
   return (
-    <section className="relative w-full h-96 mt-20 overflow-hidden flex items-center justify-center">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url(/placeholder.svg?height=400&width=1200&query=nightclub-gallery-collection)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+    <section className="relative w-full h-[70vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
+      {/* Background Image */}
+      <Image
+        src="/gallery/bg.jpg" // replace with your image
+        alt="Gallery Background"
+        fill
+        priority
+        className="object-cover object-top"  // 👈 TOP-CENTER POSITION
       />
-      <div className="absolute inset-0 bg-linear-to-r from-black via-black/50 to-transparent" />
 
-      <motion.div
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="relative text-center"
-      >
-        <h1 className="text-6xl font-bold text-white neon-glow">Gallery</h1>
-      </motion.div>
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/40"></div>
+
+      {/* Centered Heading */}
+      <div className="relative z-10 text-center">
+        <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-lg">
+          Our Gallery
+        </h1>
+      </div>
     </section>
-  )
+  );
 }
