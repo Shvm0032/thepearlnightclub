@@ -1,12 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  typescript: {
-    ignoreBuildErrors: false, // Build errors ko ignore na karein
-  },
+  output: "export",          // ✅ REQUIRED for out folder
+  reactStrictMode: true,
+
   images: {
-    unoptimized: false, // Image optimization enable karein
+    unoptimized: true,       // ✅ REQUIRED for static export
   },
-  reactStrictMode: true, // React ke strict mode ko enable karein (recommended)
-}
+
+  trailingSlash: true,       // ✅ Recommended for cPanel
+};
 
 export default nextConfig;
