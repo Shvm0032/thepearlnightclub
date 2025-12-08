@@ -23,12 +23,7 @@ export default function GalleryVideoSection() {
       thumb: "/gallery/thumb3.jpg",
       duration: "0:10",
     },
-    {
-      id: 4,
-      src: "https://player.vimeo.com/external/381899614.sd.mp4?s=38eae5b43b46777fa1f21a196ee83f9d4eb1b201&profile_id=139",
-      thumb: "/gallery-thumbs/thumb4.jpg",
-      duration: "0:06",
-    },
+
   ];
 
   const [currentVideo, setCurrentVideo] = useState(videos[0]);
