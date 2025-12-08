@@ -153,31 +153,101 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* MOBILE MENU */}
+    {/* MOBILE MENU */}
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ height: 0, opacity: 0 }}
+      animate={{ height: "auto", opacity: 1 }}
+      exit={{ height: 0, opacity: 0 }}
+      className="lg:hidden bg-[#0f0f0f] border-t border-gray-800"
+    >
+      <div className="px-4 py-6 space-y-2">
+
+        {/* NORMAL LINKS */}
+        <Link
+          href="/"
+          className={`block py-2 ${pathname === "/" ? active : "text-white"}`}
+          onClick={() => setIsOpen(false)}
+        >
+          HOME
+        </Link>
+
+        <Link
+          href="/about"
+          className={`block py-2 ${pathname === "/about" ? active : "text-white"}`}
+          onClick={() => setIsOpen(false)}
+        >
+          ABOUT
+        </Link>
+
+        <Link
+          href="/gallery"
+          className={`block py-2 ${pathname === "/gallery" ? active : "text-white"}`}
+          onClick={() => setIsOpen(false)}
+        >
+          GALLERY
+        </Link>
+
+        {/* ✅ EVENTS MOBILE DROPDOWN */}
+        <button
+          onClick={() => setMobileEvent(!mobileEvent)}
+          className="w-full flex items-center justify-between py-2 text-white"
+        >
+          UPCOMING EVENTS
+          <ChevronDown
+            size={18}
+            className={`transition ${mobileEvent ? "rotate-180" : ""}`}
+          />
+        </button>
+
         <AnimatePresence>
-          {isOpen && (
+          {mobileEvent && (
             <motion.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="lg:hidden bg-[#0f0f0f] border-t border-gray-800"
+              className="pl-4 space-y-1"
             >
-              <div className="px-4 py-6 space-y-2">
-                {["/", "/about", "/gallery", "/contact"].map((path) => (
-                  <Link
-                    key={path}
-                    href={path}
-                    className={`block py-2 ${
-                      pathname === path ? active : "text-white hover:text-[#E86C60]"
-                    }`}
-                  >
-                    {path === "/" ? "Home" : path.replace("/", "").toUpperCase()}
-                  </Link>
-                ))}
-              </div>
+              {[
+                ["Bands", "/events/bands"],
+                ["Cocktail Carnival", "/events/cocktail-carnival"],
+                ["Beach Parties", "/events/beach-parties"],
+                ["Live Music", "/events/live-music"],
+                ["DJ Night", "/events/dj-night"],
+              ].map(([label, path]) => (
+                <Link
+                  key={path}
+                  href={path}
+                  onClick={() => {
+                    setIsOpen(false);
+                    setMobileEvent(false);
+                  }}
+                  className={`block py-2 text-sm ${
+                    pathname === path
+                      ? "text-[#E86C60]"
+                      : "text-gray-300"
+                  }`}
+                >
+                  {label}
+                </Link>
+              ))}
             </motion.div>
           )}
         </AnimatePresence>
+
+        <Link
+          href="/contact"
+          className={`block py-2 ${pathname === "/contact" ? active : "text-white"}`}
+          onClick={() => setIsOpen(false)}
+        >
+          CONTACT
+        </Link>
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
       </div>
     </nav>
   );

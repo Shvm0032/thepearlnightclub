@@ -7,10 +7,13 @@ import ScrollToTop from "@/components/ScrollToTop";
 const geistSans = Geist({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "The Pearl Nightclub - Premium Nightlife Experience",
+  title: "The Pearl – The Pearl-Bar Club Event",
   description:
     "Join us for exclusive cocktails, live entertainment, and unforgettable nights at The Pearl.",
-  generator: "v0.app",
+    icons: {
+    icon: "/favicon.jpg",
+    shortcut: "/favicon.jpg",
+  },
 };
 
 export const viewport = {
