@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   MdOutlineWork,
@@ -50,7 +51,6 @@ export default function EventCategories() {
     },
   ];
 
-  // Framer Variants
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -79,14 +79,32 @@ export default function EventCategories() {
           className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4"
         >
           {categories.map((cat, index) => (
-            <motion.div
-              key={index}
-              variants={item}
-              className={`rounded-xl border border-black shadow-sm p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-all duration-300 hover:shadow-lg ${cat.gradient}`}
-            >
-              <div className="mb-3">{cat.icon}</div>
-              <h3 className="font-bold text-lg text-black">{cat.name}</h3>
-            </motion.div>
+            
+            <Link href="/contact" key={index}>
+  <motion.div
+    variants={item}
+    className={`
+      w-full h-36 
+      rounded-xl border border-black 
+      shadow-sm p-6 
+      flex flex-col items-center justify-center 
+      text-center cursor-pointer 
+      transition-all duration-300 
+      hover:shadow-xl hover:scale-105 
+      ${cat.gradient}
+    `}
+  >
+    <div className="mb-3 flex items-center justify-center">
+      {cat.icon}
+    </div>
+
+    <h3 className="font-bold text-lg text-black leading-tight">
+      {cat.name}
+    </h3>
+  </motion.div>
+</Link>
+
+
           ))}
         </motion.div>
       </div>

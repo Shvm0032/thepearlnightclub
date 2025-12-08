@@ -38,7 +38,7 @@ export default function OurStory() {
           ) : (
             <iframe
               className="w-full h-full rounded-xl"
-              src="https://www.youtube.com/embed/VIDEO_ID?autoplay=1"
+              src="http://localhost:10004/wp-content/uploads/2024/09/49784005_353326512135684_2691141149493559296_n.mp4"
               title="Our Story Video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
