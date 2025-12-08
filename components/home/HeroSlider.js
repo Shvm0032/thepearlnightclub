@@ -29,14 +29,14 @@ export default function HeroSection() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4 sm:px-6">
 
         {/* Heading */}
         <motion.h1
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.9 }}
-          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white"
+          className="text-3xl sm:text-4xl lg:text-6xl font-extrabold text-white leading-tight"
         >
           {slides[currentSlide].title}
         </motion.h1>
@@ -46,7 +46,7 @@ export default function HeroSection() {
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.9 }}
-          className="text-lg sm:text-xl lg:text-2xl text-white font-light mt-3"
+          className="text-base sm:text-xl lg:text-2xl text-white font-light mt-3"
         >
           {slides[currentSlide].subtitle}
         </motion.p>
@@ -56,14 +56,14 @@ export default function HeroSection() {
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.45, duration: 0.8 }}
-          className="w-full max-w-6xl mt-10 px-4"
+          className="w-full max-w-6xl mt-10 px-2 sm:px-4"
         >
-          <div className="bg-white rounded-sm shadow-xl overflow-hidden border border-gray-200">
+          <div className="bg-white rounded-md shadow-xl overflow-hidden border border-gray-200">
 
             <div className="flex flex-col md:flex-row items-stretch">
 
-              {/* Name Input */}
-              <div className="flex items-center gap-4 px-6 py-2 border-b md:border-b-0 md:border-r border-gray-200 flex-1">
+              {/* Input Field */}
+              <div className="flex items-center gap-3 px-4 py-4 border-b md:border-b-0 md:border-r border-gray-200 flex-1 h-[68px]">
                 <FiSearch className="text-[#E86C60] text-2xl" />
                 <input
                   type="text"
@@ -73,16 +73,10 @@ export default function HeroSection() {
               </div>
 
               {/* Category Select */}
-              <div className="flex items-center gap-4 px-6 py-2 border-b md:border-b-0 md:border-r border-gray-200 flex-1 relative">
-
+              <div className="flex items-center gap-3 px-4 py-4 border-b md:border-b-0 md:border-r border-gray-200 flex-1 relative h-[68px]">
                 <MdCategory className="text-[#E86C60] text-2xl" />
 
-                <select
-                  className="
-                    w-full bg-transparent text-gray-700 text-lg cursor-pointer
-                    appearance-none outline-none py-2
-                  "
-                >
+                <select className="w-full bg-transparent text-gray-700 text-lg outline-none appearance-none">
                   <option>Select Category</option>
                   <option>Business</option>
                   <option>Concert</option>
@@ -92,25 +86,18 @@ export default function HeroSection() {
                   <option>DJ Nights</option>
                 </select>
 
-                {/* Custom Arrow */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg width="22" height="22" fill="#E86C60" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="#E86C60" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5" />
                   </svg>
                 </div>
               </div>
 
               {/* Time Select */}
-              <div className="flex items-center gap-4 px-6 py-2 flex-1 md:border-r border-gray-200 relative">
-
+              <div className="flex items-center gap-3 px-4 py-4 flex-1 md:border-r border-gray-200 relative h-[68px]">
                 <FiClock className="text-[#E86C60] text-2xl" />
 
-                <select
-                  className="
-                    w-full bg-transparent text-gray-700 text-lg cursor-pointer
-                    appearance-none outline-none py-2
-                  "
-                >
+                <select className="w-full bg-transparent text-gray-700 text-lg outline-none appearance-none">
                   <option>Today</option>
                   <option>Tomorrow</option>
                   <option>This Week</option>
@@ -119,18 +106,18 @@ export default function HeroSection() {
                   <option>Next Month</option>
                 </select>
 
-                {/* Custom Arrow */}
                 <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                  <svg width="22" height="22" fill="#E86C60" viewBox="0 0 24 24">
+                  <svg width="20" height="20" fill="#E86C60" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5" />
                   </svg>
                 </div>
               </div>
 
               {/* Search Button */}
-              <button className="bg-[#E86C60] hover:bg-[#d45a50] text-white font-bold text-lg px-10 py-5 transition-all duration-300 whitespace-nowrap">
+              <button className="bg-[#E86C60] hover:bg-[#d45a50] text-white font-bold text-lg px-10 py-4 md:py-0 h-[68px] transition-all duration-300 whitespace-nowrap">
                 Search
               </button>
+
             </div>
 
           </div>
