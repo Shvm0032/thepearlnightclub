@@ -4,50 +4,60 @@ import { useRef, useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-
 import { motion } from "framer-motion";
 
 const eventsData = [
   {
     title: "Live Music Performances",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/live-music.png",
+    image: "/home/live-music.png",
+    count: 1,
+    link: "/contact/?event_city=live-music-performances",
   },
   {
     title: "Party",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/food-pairing.png",
+    image: "/home/food-pairing.png",
+    count: 1,
+    link: "/contact/?event_city=party",
   },
   {
     title: "Paint and Sip",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/pexels-ruslan-alekso-1928131.jpg",
+    image: "/home/pexels-ruslan-alekso.jpg",
+    count: 0,
+    link: "/contact/?event_city=paint-and-sip",
   },
   {
     title: "Seasonal Celebrations",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/seasonal-celebration.png",
+    image: "/home/seasonal-celebration.png",
+    count: 2,
+    link: "/contact/?event_state=seasonal-celebrations",
   },
   {
     title: "Trivia Night",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/pexels-thibault-trillet-167491.jpg",
+    image: "/home/thibault-trillet.jpg",
+    count: 3,
+    link: "/contact/?event_state=trivia-night",
   },
   {
     title: "Cocktail Workshops",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/cocktail-img.png",
+    image: "/home/cocktail.png",
+    count: 1,
+    link: "/contact/?event_city=cocktail-workshops",
   },
   {
     title: "Stand-up Nights",
-    image: "http://localhost:10004/wp-content/uploads/2024/08/pexels-sharing-festival-14870722.jpg",
-  }
+    image: "/home/sharing-festival.jpg",
+    count: 0,
+    link: "/contact/?event_city=stand-up-nights",
+  },
 ];
-
 
 export default function PopularEvents() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [pageCount, setPageCount] = useState(1);
 
-  // Calculate total pages based on screen size
   const calculatePages = () => {
     let perView = 1;
-
     if (window.innerWidth >= 1024) perView = 4;
     else if (window.innerWidth >= 768) perView = 3;
     else if (window.innerWidth >= 640) perView = 2;
@@ -57,10 +67,8 @@ export default function PopularEvents() {
 
   useEffect(() => {
     setPageCount(calculatePages());
-
     const handleResize = () => setPageCount(calculatePages());
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -78,9 +86,9 @@ export default function PopularEvents() {
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900">
             Our Most Popular Events
           </h2>
-
-          <p className="text-gray-600 mt-2 text-lg">Hurry up! Unleash the Night</p>
-
+          <p className="text-gray-600 mt-2 text-lg">
+            Hurry up! Unleash the Night
+          </p>
           <div className="w-16 h-[3px] bg-red-500 mt-3"></div>
         </motion.div>
 
@@ -89,7 +97,7 @@ export default function PopularEvents() {
           modules={[Autoplay]}
           slidesPerView={1}
           spaceBetween={25}
-          autoplay={{ delay: 2500 }}
+          autoplay={{ delay: 3000 }}
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           loop={false}
@@ -106,6 +114,7 @@ export default function PopularEvents() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 viewport={{ once: true }}
+                onClick={() => (window.location.href = item.link)}
                 className="relative rounded-lg overflow-hidden shadow-lg group cursor-pointer"
               >
                 <img
@@ -114,15 +123,23 @@ export default function PopularEvents() {
                   className="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black/60 to-transparent">
+                {/* Hover Overlay */}
+                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                {/* Title + Event Count */}
+                <div className="absolute bottom-0 left-0 right-0 p-4 bg-linear-to-t from-black/80 to-transparent group-hover:from-black/95">
                   <h3 className="text-white text-lg font-bold">{item.title}</h3>
+
+                  <p className="text-gray-200 text-sm mt-1 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    {item.count} Events
+                  </p>
                 </div>
               </motion.div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Custom Nav Dots */}
+        {/* Custom Pagination Dots */}
         <div className="flex justify-center mt-6 gap-3">
           {Array.from({ length: pageCount }).map((_, index) => (
             <button

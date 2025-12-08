@@ -75,7 +75,7 @@ export default function ContactForm() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl font-bold mb-1">Contact Info</h2>
-          <div className="w-20 h-[3px] bg-red-500 mb-8"></div>
+          <div className="w-20 h-[3px] bg-[#e86c60] mb-8"></div>
 
           <p className="text-gray-600 leading-relaxed mb-10">
             Have a question or want to get in touch with us?
@@ -88,7 +88,7 @@ export default function ContactForm() {
 
             {/* Phone */}
             <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
-              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#e86c60] text-white rounded-xl text-xl">
                 <FaPhoneAlt />
               </div>
               <p className="text-lg font-medium text-gray-700">61 410 036 729</p>
@@ -96,7 +96,7 @@ export default function ContactForm() {
 
             {/* Email */}
             <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
-              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#e86c60] text-white rounded-xl text-xl">
                 <FaEnvelope />
               </div>
               <p className="text-lg font-medium text-gray-700">thepearl149@hotmail.com</p>
@@ -104,7 +104,7 @@ export default function ContactForm() {
 
             {/* Location */}
             <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
-              <div className="w-12 h-12 flex items-center justify-center bg-red-500 text-white rounded-xl text-xl">
+              <div className="w-12 h-12 flex items-center justify-center bg-[#e86c60] text-white rounded-xl text-xl">
                 <FaMapMarkerAlt />
               </div>
               <p className="text-lg font-medium text-gray-700">149 Waymoth St Adelaide 5000</p>
@@ -136,7 +136,7 @@ export default function ContactForm() {
           className="bg-gray-100 rounded-xl shadow-lg p-10"
         >
           <h2 className="text-3xl font-bold">Get In Touch</h2>
-          <div className="w-24 h-[3px] bg-red-500 my-3"></div>
+          <div className="w-24 h-[3px] bg-[#e86c60] my-3"></div>
 
           <p className="text-gray-600 mb-6">
             Fill out the form below and our team will get back to you shortly.
@@ -150,7 +150,7 @@ export default function ContactForm() {
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-[#e86c60]"
               />
             </div>
 
@@ -161,7 +161,7 @@ export default function ContactForm() {
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:ring-red-400"
+                className="w-full p-3 rounded border border-gray-300 focus:ring-2 focus:[#e86c60]"
               />
             </div>
 
@@ -190,7 +190,7 @@ export default function ContactForm() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-red-500 hover:bg-red-600 text-white text-lg font-semibold py-3 rounded-md transition"
+              className="w-full bg-[#e86c60] hover:bg-[#d05a50] text-white text-lg font-semibold py-3 rounded-md transition"
             >
               {loading ? "Sending..." : "Submit"}
             </button>
@@ -199,7 +199,7 @@ export default function ContactForm() {
               <p className="text-green-600 font-medium">Message sent successfully!</p>
             )}
             {success === false && (
-              <p className="text-red-600 font-medium">Something went wrong. Try again!</p>
+              <p className="text-[#e86c60] font-medium">Something went wrong. Try again!</p>
             )}
           </form>
         </motion.div>

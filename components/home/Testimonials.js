@@ -13,28 +13,28 @@ export default function Testimonials() {
     {
       name: "Alex Rl",
       role: "CEO of XpeedStudio",
-      image: "http://localhost:10004/wp-content/uploads/2024/08/Untitled-design-7.png",
+      image: "/home/testimonial1.png",
       message:
         "I had a fantastic time at The Pearl! The venue's ambiance was incredible, the staff was friendly, and the DJ kept the energy high all night. Definitely one of the best nights out!",
     },
     {
       name: "Taylor H",
       role: "Manager at Cloud Info",
-      image: "http://localhost:10004/wp-content/uploads/2024/08/about_team_4-1.jpg",
+      image: "/home/testimonial2.png",
       message:
         "The Pearl never disappoints! The atmosphere during events is unmatched, and they always bring in top-notch performers. I've recommended this place to all my friends!",
     },
     {
       name: "Jonh Doe",
       role: "CEO & Founder Travel",
-      image: "http://localhost:10004/wp-content/uploads/2024/08/Untitled-design-10.png",
+      image: "/home/testimonial3.png",
       message:
         "Attending bar event at The Pearl was an absolute blast! The ambiance was electric, the drinks were fantastic, and the live band had us dancing all night!.",
     },
     {
       name: "Gregory Kennedy",
       role: "Manager at Sunfox",
-      image: "http://localhost:10004/wp-content/uploads/2024/08/Untitled-design-9.png",
+      image: "/home/testimonial4.png",
       message:
         "I've been to numerous bars, but The Pearl stands out for its incredible cocktails. Each sip felt like a work of art, and the mixologists know their craft. Count me in for every event!",
     },
