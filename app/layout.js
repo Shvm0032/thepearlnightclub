@@ -2,9 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footers from "@/components/Footers";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const geistSans = Geist({ subsets: ["latin"] });
-// const geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata = {
   title: "The Pearl Nightclub - Premium Nightlife Experience",
@@ -25,6 +25,7 @@ export default function RootLayout({ children }) {
       <body className={`${geistSans.className} bg-background text-foreground`}>
         <Header />
         <main>{children}</main>
+        <ScrollToTop />
         <Footers/>
       </body>
     </html>
