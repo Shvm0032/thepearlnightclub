@@ -81,28 +81,28 @@ export default function EventCategories() {
           {categories.map((cat, index) => (
             
             <Link href="/contact" key={index}>
-  <motion.div
-    variants={item}
-    className={`
-      w-full h-36 
-      rounded-xl border border-black 
-      shadow-sm p-6 
-      flex flex-col items-center justify-center 
-      text-center cursor-pointer 
-      transition-all duration-300 
-      hover:shadow-xl hover:scale-105 
-      ${cat.gradient}
-    `}
-  >
-    <div className="mb-3 flex items-center justify-center">
-      {cat.icon}
-    </div>
+              <motion.div
+                variants={item}
+                className={`
+                  w-full h-36
+                  rounded-xl border border-black
+                  shadow-sm p-6
+                  flex flex-col items-center justify-center
+                  text-center cursor-pointer
+                  transition-all duration-300
+                  hover:shadow-xl hover:scale-105
+                  ${cat.gradient}
+                `}
+              >
+                <div className="mb-3 flex items-center justify-center">
+                  {cat.icon}
+                </div>
 
-    <h3 className="font-bold text-lg text-black leading-tight">
-      {cat.name}
-    </h3>
-  </motion.div>
-</Link>
+                <h3 className="font-bold text-lg text-black leading-tight">
+                  {cat.name}
+                </h3>
+              </motion.div>
+            </Link>
 
 
           ))}

@@ -1,13 +1,15 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: false, // Build errors ko ignore na karein
+    ignoreBuildErrors: false,
   },
-  output :"export",
+  output: "export",
+  trailingSlash: true,
   images: {
-    unoptimized: true, // Image optimization enable karein
+    unoptimized: true,
   },
-  reactStrictMode: true, // React ke strict mode ko enable karein (recommended)
-}
+  reactStrictMode: true,
+};
 
 export default nextConfig;

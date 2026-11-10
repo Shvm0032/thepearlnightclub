@@ -1,10 +1,7 @@
 "use client";
 
 import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt, FaFacebook, FaLinkedin } from "react-icons/fa";
-import { Instagram } from "lucide-react";
-import { FaMapMarkerAlt } from "react-icons/fa";
-import { Facebook } from 'lucide-react';
+import { FaPhoneAlt } from "react-icons/fa";
 
 export default function Footers() {
   return (
@@ -51,32 +48,12 @@ export default function Footers() {
 
           <ul className="space-y-3">
             <li className="flex gap-3">
-              <FaMapMarkerAlt size={18} /> 149 Waymoth st Adelaide 5000
-            </li>
-            <li className="flex gap-3">
               <MdEmail size={18} /> thepearl149@hotmail.com
             </li>
             <li className="flex gap-3">
               <FaPhoneAlt size={18} /> +61 410 036 729
             </li>
           </ul>
-
-        {/* Social Icons */}
-<div className="flex items-center gap-1 mt-5">
-
-  <a className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e86c60]  bg-transparent hover:opacity-90 transition cursor-pointer">
-      <Facebook size={22} className="text-[#cccccc] hover:text-white" />
-  </a>
-
-  <a className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e86c60]  bg-transparent hover:opacity-90 transition cursor-pointer">
-    <Instagram size={22} className="text-[#cccccc] hover:text-white" />
-  </a>
-
-  <a className="w-10 h-10 flex items-center justify-center rounded-full hover:bg-[#e86c60]  bg-transparent hover:opacity-90 transition cursor-pointer">
-    <FaLinkedin size={22} className="text-[#cccccc] hover:text-white" />
-  </a>
-
-</div>
 
         </div>
       </div>

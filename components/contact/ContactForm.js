@@ -5,11 +5,6 @@ import { motion } from "framer-motion";
 import {
   FaPhoneAlt,
   FaEnvelope,
-  FaMapMarkerAlt,
-  FaFacebookF,
-  FaTwitter,
-  FaLinkedinIn,
-  FaInstagram,
 } from "react-icons/fa";
 
 export default function ContactForm() {
@@ -102,30 +97,8 @@ export default function ContactForm() {
               <p className="text-lg font-medium text-gray-700">thepearl149@hotmail.com</p>
             </div>
 
-            {/* Location */}
-            <div className="flex items-center gap-4 bg-gray-100 p-4 rounded-xl shadow-sm">
-              <div className="w-12 h-12 flex items-center justify-center bg-[#e86c60] text-white rounded-xl text-xl">
-                <FaMapMarkerAlt />
-              </div>
-              <p className="text-lg font-medium text-gray-700">149 Waymoth St Adelaide 5000</p>
-            </div>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex gap-5 mt-8">
-            <a className="bg-blue-600 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
-              <FaFacebookF className="text-xl" />
-            </a>
-            <a className="bg-sky-400 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
-              <FaTwitter className="text-xl" />
-            </a>
-            <a className="bg-blue-700 text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
-              <FaLinkedinIn className="text-xl" />
-            </a>
-            <a className="bg-black text-white p-3 rounded-full shadow-md hover:scale-110 transition cursor-pointer">
-              <FaInstagram className="text-xl" />
-            </a>
-          </div>
         </motion.div>
 
         {/* RIGHT – FORM */}

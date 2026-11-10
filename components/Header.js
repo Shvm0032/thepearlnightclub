@@ -5,8 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt, FaLinkedin, FaFacebook } from "react-icons/fa";
-import { Instagram, ChevronDown, Menu, X } from "lucide-react";
+import { FaPhoneAlt } from "react-icons/fa";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
@@ -41,18 +41,6 @@ export default function Navbar() {
               </a>
             </div>
 
-            <div className="flex gap-3 mt-2 sm:mt-0">
-              <a className="w-8 h-8 rounded-full bg-[#4E69A2] flex items-center justify-center text-white">
-                <FaFacebook size={14} />
-              </a>
-              <a className="w-8 h-8 rounded-full bg-linear-to-br from-purple-600 to-pink-600 flex items-center justify-center text-white">
-                <Instagram size={14} />
-              </a>
-              <a className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center text-white">
-                <FaLinkedin size={14} />
-              </a>
-            </div>
-
           </div>
         </div>
       </div>
@@ -60,7 +48,7 @@ export default function Navbar() {
       {/* MAIN NAV */}
       <div className="py-2">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between">
+          <div className="relative flex items-center justify-between">
 
             {/* LOGO */}
             <Link href="/">
@@ -146,10 +134,21 @@ export default function Navbar() {
               Book Now
             </Link>
 
-            {/* MOBILE TOGGLE */}
-            <button className="lg:hidden text-white" onClick={() => setIsOpen(!isOpen)}>
-              {isOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
+            <div className="absolute left-1/2 -translate-x-1/2 lg:hidden">
+              <Image
+                src="/qrcode.webp"
+                alt="Scan to connect with The Pearl"
+                width={48}
+                height={48}
+                className="h-12 w-12 object-contain"
+              />
+            </div>
+
+            <div className="ml-auto lg:hidden">
+              <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
+                {isOpen ? <X size={28} /> : <Menu size={28} />}
+              </button>
+            </div>
           </div>
         </div>
 
