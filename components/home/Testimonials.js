@@ -5,7 +5,6 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Testimonials() {
@@ -41,43 +40,39 @@ export default function Testimonials() {
   ];
 
   return (
-    <section
-      className="relative w-full py-20 bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: "url('/about/testimonial.jpeg')" }}
-    >
+    <section className="relative w-full py-20 bg-[#0a0a0a] overflow-hidden">
+      {/* Background image overlay */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-10"
+        style={{ backgroundImage: "url('/about/testimonial.jpeg')" }}
+      />
+      <div className="absolute inset-0 bg-[#0a0a0a]/70" />
+
       <div className="max-w-4xl mx-auto px-6 relative">
-        {/* Heading */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+        <div
           className="text-center mb-12"
         >
-          <h4 className="text-gray-500 tracking-widest mb-2">TESTIMONIALS</h4>
-          <h2 className="text-4xl md:text-5xl font-normal mb-3 text-[#1C1C1C]">
-            What People Say
-          </h2>
-          <div className="w-16 h-0.5 bg-gray-400 mx-auto"></div>
-        </motion.div>
+          <h4 className="text-[#d4af37] tracking-widest mb-2 text-sm">TESTIMONIALS</h4>
+          <h2 className="text-4xl md:text-5xl font-normal mb-3 text-white">What People Say</h2>
+          <div className="w-16 h-0.5 bg-[#d4af37] mx-auto"></div>
+        </div>
 
-        {/* Custom Nav Buttons */}
         <button
           className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 
-          w-12 h-12 flex items-center justify-center rounded-full bg-white/80 shadow border 
-          hover:bg-white transition z-30 text-[#D05A50]"
+          w-12 h-12 flex items-center justify-center rounded-full bg-[#d4af37]/20 border border-[#d4af37]/40 
+          hover:bg-[#d4af37] hover:text-black transition z-30 text-[#d4af37]"
         >
           <ChevronLeft size={22} />
         </button>
 
         <button
           className="swiper-button-next-custom absolute right-0 top-1/2 -translate-y-1/2 
-          w-12 h-12 flex items-center justify-center rounded-full bg-white/80 shadow border 
-          hover:bg-white transition z-30 text-[#D05A50]"
+          w-12 h-12 flex items-center justify-center rounded-full bg-[#d4af37]/20 border border-[#d4af37]/40 
+          hover:bg-[#d4af37] hover:text-black transition z-30 text-[#d4af37]"
         >
           <ChevronRight size={22} />
         </button>
 
-        {/* Swiper Slider */}
         <Swiper
           modules={[Navigation, Autoplay]}
           navigation={{
@@ -91,24 +86,20 @@ export default function Testimonials() {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+              <div
                 className="text-center px-6"
               >
                 <img
                   src={t.image}
-                  className="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-white shadow-lg"
+                  alt={t.name}
+                  className="w-28 h-28 rounded-full mx-auto mb-6 border-4 border-[#d4af37] shadow-lg object-cover"
                 />
-
-                <p className="text-[22px] font-semibold text-[#333333] max-w-4xl mx-auto mb-6 leading-relaxed">
+                <p className="text-[22px] font-semibold text-white/90 max-w-4xl mx-auto mb-6 leading-relaxed">
                   {t.message}
                 </p>
-
-                <h3 className="text-2xl font-bold text-[#333333]">{t.name}</h3>
-                <p className="text-gray-500 text-lg">{t.role}</p>
-              </motion.div>
+                <h3 className="text-2xl font-bold text-[#d4af37]">{t.name}</h3>
+                <p className="text-gray-400 text-lg">{t.role}</p>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

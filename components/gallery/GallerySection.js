@@ -1,99 +1,89 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
 
-export default function GallerySection() {
-  const images = [
-    "/gallery/1.jpg",
-    "/gallery/2.jpg",
-    "/gallery/3.jpg",
-    "/gallery/4.jpg",
-    "/gallery/5.jpg",
-    "/gallery/6.jpg",
-    "/gallery/7.jpg",
-    "/gallery/8.jpg",
-    "/gallery/9.png",
-    "/gallery/10.png",
-    "/gallery/11.png",
-    "/gallery/12.png",
-  ];
+const photos = [
+  { src: "/gallery/1.jpg", title: "Luxury Bar Interior" },
+  { src: "/gallery/2.jpg", title: "Beach Party Sunset" },
+  { src: "/gallery/3.jpg", title: "Nightclub Dance Floor" },
+  { src: "/gallery/4.jpg", title: "Red Carpet Arrival" },
+  { src: "/gallery/5.jpg", title: "Rooftop Party" },
+  { src: "/gallery/6.jpg", title: "Champagne Celebration" },
+];
 
+export default function GallerySection() {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const nextImage = () => {
-    setActiveIndex((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setActiveIndex((prev) =>
-      prev === 0 ? images.length - 1 : prev - 1
-    );
-  };
+  const nextImage = () => setActiveIndex((prev) => (prev + 1) % photos.length);
+  const prevImage = () => setActiveIndex((prev) => (prev === 0 ? photos.length - 1 : prev - 1));
 
   return (
-    <section className="py-16 bg-white">
-      {/* Heading */}
-      <div className="text-center mb-12">
-        <h2 className="text-3xl md:text-4xl font-bold">Gallery</h2>
-        <div className="w-20 h-0.5 bg-black mx-auto mt-3"></div>
+    <section className="py-16 px-4 bg-[#0a0a0a]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          {photos.map((photo, index) => (
+            <div
+              key={index}
+              className="cursor-pointer overflow-hidden rounded-lg border border-[#d4af37]/25 bg-[#111111] card-lift group"
+              onClick={() => setActiveIndex(index)}
+            >
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src={photo.src}
+                  alt={photo.title}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              </div>
+              <div className="p-5 text-center">
+                <h3 className="text-[#d4af37] text-lg font-semibold font-serif">
+                  {photo.title}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <button className="btn-gold px-10 py-4 rounded-md text-base font-bold uppercase tracking-wider">
+            View More Photos
+          </button>
+        </div>
       </div>
 
-      {/* IMAGE GRID */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {images.map((img, index) => (
-          <div
-            key={index}
-            className="cursor-pointer overflow-hidden rounded-lg shadow-lg"
-            onClick={() => setActiveIndex(index)}
-          >
-            <Image
-              src={img}
-              alt="Gallery"
-              width={600}
-              height={400}
-              className="object-cover w-full h-full hover:scale-105 transition duration-300"
-            />
-          </div>
-        ))}
-      </div>
-
-      {/* LIGHTBOX POPUP */}
+      {/* Lightbox */}
       {activeIndex !== null && (
-        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-999 p-4">
-          
-          {/* CLOSE BUTTON */}
+        <div className="fixed inset-0 bg-black/85 flex items-center justify-center z-[999] p-4">
           <button
-            className="absolute top-6 right-6 text-white text-3xl"
+            className="absolute top-6 right-6 text-white text-3xl z-10"
             onClick={() => setActiveIndex(null)}
+            aria-label="Close"
           >
             ✕
           </button>
-
-          {/* LEFT ARROW */}
           <button
-            className="absolute left-6 text-white text-4xl"
+            className="absolute left-4 text-white text-4xl z-10"
             onClick={prevImage}
+            aria-label="Previous"
           >
-            ❮
+            ‹
           </button>
-
-          {/* MAIN IMAGE */}
-          <div className="max-w-3xl max-h-[80vh]">
+          <div className="max-w-4xl max-h-[85vh] relative w-full">
             <Image
-              src={images[activeIndex]}
-              alt="Full View"
-              width={1200}
-              height={800}
-              className="rounded-lg object-contain"
+              src={photos[activeIndex].src}
+              alt={photos[activeIndex].title}
+              fill
+              className="object-contain rounded-lg"
             />
           </div>
-
-          {/* RIGHT ARROW */}
           <button
-            className="absolute right-6 text-white text-4xl"
+            className="absolute right-4 text-white text-4xl z-10"
             onClick={nextImage}
+            aria-label="Next"
           >
-            ❯
+            ›
           </button>
         </div>
       )}

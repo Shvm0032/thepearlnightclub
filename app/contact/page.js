@@ -4,14 +4,12 @@ export const metadata = {
 
 import ContactHero from "../../components/contact/ContactHero"
 import ContactForm from "../../components/contact/ContactForm"
-import GoogleMapSection from "../../components/contact/GoogleMapSection"
 
 export default function ContactPage() {
   return (
     <>
       <ContactHero />
       <ContactForm />
-      <GoogleMapSection/>
     </>
   )
 }
