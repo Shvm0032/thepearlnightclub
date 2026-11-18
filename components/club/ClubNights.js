@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const nights = [
   {
@@ -25,12 +22,8 @@ export default function ClubNights() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {nights.map((night, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.12 }}
-              viewport={{ once: true }}
               className="relative bg-[#0d0d0d] border border-[#d4af37]/30 rounded-lg p-8 text-center card-lift"
               style={{
                 boxShadow: "inset 0 0 30px rgba(212,175,55,0.05)",
@@ -59,7 +52,7 @@ export default function ClubNights() {
               <p className="text-white/75 text-sm sm:text-base leading-relaxed whitespace-pre-line">
                 {night.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

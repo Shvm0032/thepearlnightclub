@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function AboutHero() {
   return (
     <section className="relative w-full h-[60vh] md:h-[80vh] overflow-hidden flex items-center">
@@ -19,10 +17,7 @@ export default function AboutHero() {
       <div className="absolute inset-0 bg-black/40 md:bg-black/30"></div>
 
       {/* Content */}
-      <motion.div
-        initial={{ y: 40, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
+      <div
         className="relative px-6 md:mx-24 mx-4 max-w-xl md:max-w-5xl"
       >
         <h1 className="text-white text-4xl md:text-[70px] font-black leading-tight md:leading-[1.1] text-center md:text-left">
@@ -43,7 +38,7 @@ export default function AboutHero() {
             ▶ Watch Video
           </button>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

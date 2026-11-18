@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -69,13 +68,7 @@ export default function ContactForm() {
     <section className="py-16 px-4 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* LEFT – BOOK YOUR RESERVATION */}
-        <motion.div
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="bg-[#0d0d0d] border border-[#d4af37]/30 rounded-lg p-8 gold-frame"
-        >
+        <div className="bg-[#0d0d0d] border border-[#d4af37]/30 rounded-lg p-8 gold-frame">
           <h2 className="text-center text-[#d4af37] text-xl sm:text-2xl font-bold tracking-[0.15em] uppercase mb-8 font-serif">
             Book Your Reservation
           </h2>
@@ -162,16 +155,10 @@ export default function ContactForm() {
               <p className="text-[#d4af37] text-center font-medium">Something went wrong. Please try again.</p>
             )}
           </form>
-        </motion.div>
+        </div>
 
         {/* RIGHT – CONTACT INFO */}
-        <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
-          className="bg-[#0d0d0d] border border-[#d4af37]/30 rounded-lg p-8 gold-frame"
-        >
+        <div className="bg-[#0d0d0d] border border-[#d4af37]/30 rounded-lg p-8 gold-frame">
           <h2 className="text-center text-[#d4af37] text-xl sm:text-2xl font-bold tracking-[0.15em] uppercase mb-8 font-serif">
             Contact Info
           </h2>
@@ -204,7 +191,7 @@ export default function ContactForm() {
             <p className="text-[#d4af37] font-bold text-base tracking-wide">Scan To Book</p>
             <p className="text-white/60 text-sm mt-1">Scan for instant booking</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

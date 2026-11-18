@@ -5,7 +5,6 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function Testimonials() {
@@ -50,17 +49,13 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-[#0a0a0a]/70" />
 
       <div className="max-w-4xl mx-auto px-6 relative">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+        <div
           className="text-center mb-12"
         >
           <h4 className="text-[#d4af37] tracking-widest mb-2 text-sm">TESTIMONIALS</h4>
           <h2 className="text-4xl md:text-5xl font-normal mb-3 text-white">What People Say</h2>
           <div className="w-16 h-0.5 bg-[#d4af37] mx-auto"></div>
-        </motion.div>
+        </div>
 
         <button
           className="swiper-button-prev-custom absolute left-0 top-1/2 -translate-y-1/2 
@@ -91,10 +86,7 @@ export default function Testimonials() {
         >
           {testimonials.map((t, i) => (
             <SwiperSlide key={i}>
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+              <div
                 className="text-center px-6"
               >
                 <img
@@ -107,7 +99,7 @@ export default function Testimonials() {
                 </p>
                 <h3 className="text-2xl font-bold text-[#d4af37]">{t.name}</h3>
                 <p className="text-gray-400 text-lg">{t.role}</p>
-              </motion.div>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>

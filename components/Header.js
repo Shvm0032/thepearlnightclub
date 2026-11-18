@@ -5,7 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -109,14 +108,10 @@ export default function Navbar() {
       </div>
 
       {/* MOBILE MENU */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden bg-[#0a0a0a] border-t border-[#d4af37]/15"
-          >
+      {isOpen && (
+        <div
+          className="lg:hidden bg-[#0a0a0a] border-t border-[#d4af37]/15"
+        >
             <div className="px-4 py-6 space-y-1">
               {navItems.map((item) => (
                 <Link
@@ -150,9 +145,8 @@ export default function Navbar() {
                 </Link>
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        </div>
+      )}
     </nav>
   );
 }

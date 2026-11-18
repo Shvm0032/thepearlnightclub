@@ -10,27 +10,16 @@ export default function AboutSection() {
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
           {/* LEFT — IMAGE */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="relative"
-          >
+          <div className="relative">
             <img
               src="/home/about.jpg"   
               alt="About The Pearl"
               className="rounded-lg w-full h-[420px] object-cover"
             />
-          </motion.div>
+          </div>
 
           {/* RIGHT — CONTENT */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
+          <div>
             {/* Gold Line */}
             <div className="flex items-center gap-4 mb-4">
               <span className="w-16 h-[3px] bg-[#d4af37]"></span>

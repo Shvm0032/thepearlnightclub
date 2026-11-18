@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 const photos = [
   { src: "/gallery/1.jpg", title: "Luxury Bar Interior" },
@@ -24,12 +23,8 @@ export default function GallerySection() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {photos.map((photo, index) => (
-            <motion.div
+            <div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              viewport={{ once: true }}
               className="cursor-pointer overflow-hidden rounded-lg border border-[#d4af37]/25 bg-[#111111] card-lift group"
               onClick={() => setActiveIndex(index)}
             >
@@ -47,7 +42,7 @@ export default function GallerySection() {
                   {photo.title}
                 </h3>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

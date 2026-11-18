@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function BarHero() {
   return (
     <section className="relative w-full min-h-[75vh] overflow-hidden flex items-center">
@@ -17,12 +13,7 @@ export default function BarHero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-20">
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9 }}
-          className="max-w-2xl"
-        >
+        <div className="max-w-2xl">
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
             <span className="gold-text">THE BAR</span>{" "}
             <span className="text-white italic font-light">— Sip Luxury</span>
@@ -31,7 +22,7 @@ export default function BarHero() {
             Elegant Evenings, Curated Menu, Unforgettable Atmosphere
           </p>
           <div className="gold-divider w-40 mt-7" />
-        </motion.div>
+        </div>
       </div>
     </section>
   );

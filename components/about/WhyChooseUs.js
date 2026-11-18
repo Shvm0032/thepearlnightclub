@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { TbDeviceImacSearch } from "react-icons/tb";
 import { GiWireframeGlobe, GiMusicalNotes } from "react-icons/gi";
 import { FaPersonDotsFromLine } from "react-icons/fa6";
@@ -33,47 +30,25 @@ export default function WhyChooseUs() {
     <section className="w-full py-24 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto px-6 text-center">
         {/* Heading */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-          className="text-4xl md:text-5xl font-black text-white"
-        >
+        <h2 className="text-4xl md:text-5xl font-black text-white">
           Why Choose Us
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.7 }}
-          className="text-[#d4af37] text-lg mt-3"
-        >
+        <p className="text-[#d4af37] text-lg mt-3">
           Our Next Bar Event Awaits
-        </motion.p>
+        </p>
 
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4, duration: 0.6 }}
-          className="flex justify-center mt-4"
-        >
+        <div className="flex justify-center mt-4">
           <span className="w-16 h-1 bg-[#d4af37] rounded-full"></span>
-        </motion.div>
+        </div>
 
         {/* Features Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mt-20">
           {features.map((feature, index) => {
             const Icon = feature.icon;
             return (
-              <motion.div
+              <div
                 key={index}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7, delay: index * 0.15 }}
                 className="flex flex-col items-center text-center group"
               >
                 <div className="w-40 h-40 rounded-full bg-[#111111] border border-[#d4af37]/20 flex items-center justify-center mb-8 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:border-[#d4af37]/60">
@@ -83,7 +58,7 @@ export default function WhyChooseUs() {
                 <p className="text-gray-400 text-md md:text-[17px] leading-relaxed max-w-[280px] px-4">
                   {feature.desc}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

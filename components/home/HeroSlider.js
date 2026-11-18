@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FiSearch, FiCalendar } from "react-icons/fi";
 import { MdCategory } from "react-icons/md";
 
@@ -22,10 +19,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 min-h-[90vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 pt-10 pb-28">
         {/* Center Logo */}
-        <motion.div
-          initial={{ scale: 0.5, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.9, ease: "easeOut" }}
+        <div
           className="mb-6"
         >
           <Image
@@ -46,34 +40,25 @@ export default function HeroSection() {
               Bar | Club | Event
             </p>
           </div>
-        </motion.div>
+        </div>
 
         {/* Headline */}
-        <motion.h1
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9, delay: 0.2 }}
+        <h1
           className="text-3xl sm:text-5xl md:text-6xl font-bold text-white leading-tight mt-6 font-serif italic"
         >
           Join Us For An Exclusive Night
-        </motion.h1>
+        </h1>
 
         {/* Subtitle */}
-        <motion.p
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.9 }}
+        <p
           className="text-base sm:text-lg md:text-xl text-white/80 font-light mt-5 max-w-3xl leading-relaxed"
         >
           Experience luxury nightlife, curated cocktails, live DJ events, and unforgettable evenings
           at the city&apos;s most exclusive venue.
-        </motion.p>
+        </p>
 
         {/* Search Bar */}
-        <motion.div
-          initial={{ y: 60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+        <div
           className="w-full max-w-5xl mt-10 px-2"
         >
           <div className="bg-[#111111]/90 backdrop-blur-md rounded-md shadow-2xl overflow-hidden border border-[#d4af37]/40 gold-frame">
@@ -117,15 +102,12 @@ export default function HeroSection() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       {/* Bottom Right - SCAN TO BOOK VVIP */}
       <div className="absolute bottom-6 right-4 sm:right-8 z-20">
-        <motion.div
-          initial={{ x: 40, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 1, duration: 0.8 }}
+        <div
           className="flex items-center gap-3 bg-[#0a0a0a]/90 backdrop-blur-sm border border-[#d4af37]/50 rounded-lg px-4 py-3 shadow-xl"
         >
           <div className="w-14 h-14 bg-white p-1 rounded shrink-0">
@@ -142,7 +124,7 @@ export default function HeroSection() {
             <p className="text-white text-lg font-bold tracking-wide">VVIP</p>
             <p className="text-white/50 text-[10px] mt-0.5">Instant reservation</p>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

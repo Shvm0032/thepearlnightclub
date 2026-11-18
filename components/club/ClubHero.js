@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function ClubHero() {
   return (
     <section className="relative w-full min-h-[75vh] overflow-hidden flex items-center">
@@ -17,12 +13,7 @@ export default function ClubHero() {
 
       {/* Content */}
       <div className="relative z-10 w-full text-center px-6 py-20">
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9 }}
-          className="max-w-3xl mx-auto"
-        >
+        <div className="max-w-3xl mx-auto">
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight">
             <span className="gold-text">THE CLUB</span>
           </h1>
@@ -34,7 +25,7 @@ export default function ClubHero() {
             World Class DJs <span className="text-[#d4af37]">•</span> Live Music{" "}
             <span className="text-[#d4af37]">•</span> Unforgettable Nights
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 
 export default function EventHero({
   title,
@@ -26,10 +25,7 @@ export default function EventHero({
       </div>
 
       {/* CONTENT */}
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+      <div
         className="relative z-10 text-center px-4 max-w-4xl"
       >
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white mb-4 leading-tight">
@@ -41,7 +37,7 @@ export default function EventHero({
             {subtitle}
           </p>
         )}
-      </motion.div>
+      </div>
 
     </section>
   );

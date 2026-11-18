@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import { useState } from "react";
 
@@ -12,12 +11,7 @@ export default function OurStory() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* ------- LEFT SIDE : VIDEO THUMBNAIL ------- */}
-        <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-          className="relative w-full h-[350px] md:h-[420px] rounded-xl overflow-hidden shadow-lg"
-        >
+        <div className="relative w-full h-[350px] md:h-[420px] rounded-xl overflow-hidden shadow-lg">
           {!showVideo ? (
             <>
               <img
@@ -44,14 +38,10 @@ export default function OurStory() {
               allowFullScreen
             ></iframe>
           )}
-        </motion.div>
+        </div>
 
         {/* ------- RIGHT SIDE : CONTENT ------- */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div>
           <h4 className="text-red-500 text-xl font-semibold mb-2">About Us!</h4>
 
           <h2 className="text-5xl font-black mb-6">Our Story</h2>
@@ -74,7 +64,7 @@ export default function OurStory() {
             nights! Our team is dedicated to crafting evenings filled with laughter, music that moves
             your soul, and libations that awaken your senses.
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

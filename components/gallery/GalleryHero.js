@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 export default function GalleryHero() {
   return (
     <section className="relative w-full py-24 px-4 bg-[#0a0a0a] overflow-hidden">
@@ -13,23 +11,13 @@ export default function GalleryHero() {
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
 
       <div className="relative z-10 text-center max-w-4xl mx-auto">
-        <motion.h1
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8 }}
-          className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
-        >
+        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
           <span className="gold-text">GALLERY</span>{" "}
           <span className="text-white">- Moments To Remember</span>
-        </motion.h1>
-        <motion.p
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-white/80 text-lg sm:text-xl mt-5 font-light"
-        >
+        </h1>
+        <p className="text-white/80 text-lg sm:text-xl mt-5 font-light">
           See The Nights Everyone Talks About
-        </motion.p>
+        </p>
       </div>
     </section>
   );

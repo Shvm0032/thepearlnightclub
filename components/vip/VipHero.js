@@ -1,7 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function VipHero() {
   return (
     <section className="relative w-full min-h-[75vh] overflow-hidden flex items-center justify-center">
@@ -17,18 +13,14 @@ export default function VipHero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-6 py-20">
-        <motion.div
-          initial={{ y: 40, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.9 }}
-        >
+        <div>
           <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight text-white">
             VIP <span className="text-white/60 font-light italic">- Your Night Your Way</span>
           </h1>
           <p className="text-white/85 text-lg sm:text-xl mt-5 font-light tracking-wide">
             For Anyone <span className="text-[#d4af37]">•</span> Your Night To Remember
           </p>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

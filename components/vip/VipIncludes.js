@@ -1,8 +1,5 @@
-"use client";
-
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { FaCheck } from "react-icons/fa";
 
 const includes = [
@@ -21,12 +18,7 @@ export default function VipIncludes() {
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left - includes list */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
-          >
+          <div>
             <h2 className="text-[#d4af37] text-sm font-semibold tracking-[0.3em] uppercase mb-6">
               Your VIP Includes
             </h2>
@@ -40,14 +32,10 @@ export default function VipIncludes() {
                 </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
 
           {/* Right - image + CTA */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7 }}
-            viewport={{ once: true }}
+          <div
             className="flex flex-col items-center"
           >
             <div className="relative w-full max-w-md rounded-lg overflow-hidden border border-[#d4af37]/30">
@@ -66,7 +54,7 @@ export default function VipIncludes() {
             >
               Reserve Your VIP Night
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Footer tagline */}

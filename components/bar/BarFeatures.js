@@ -1,7 +1,4 @@
-"use client";
-
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { GiMartini, GiGlassCelebration, GiMusicalNotes } from "react-icons/gi";
 
 const features = [
@@ -28,12 +25,8 @@ export default function BarFeatures() {
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {features.map((feature, idx) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              viewport={{ once: true }}
               className="gold-frame bg-[#111111]/80 border border-[#d4af37]/20 rounded-lg p-8 text-center card-lift"
             >
               <div className="w-20 h-20 mx-auto flex items-center justify-center rounded-full bg-[#d4af37]/10 border border-[#d4af37]/30 mb-6">
@@ -45,7 +38,7 @@ export default function BarFeatures() {
               <p className="text-white/70 text-sm leading-relaxed">
                 {feature.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
 

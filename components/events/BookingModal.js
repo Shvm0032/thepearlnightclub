@@ -1,24 +1,16 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 
 export default function BookingModal({ open, onClose, eventName = "" }) {
   return (
-    <AnimatePresence>
+    <>
       {open && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
           className="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50"
         >
           {/* Modal Box */}
-          <motion.div
-            initial={{ y: -40, opacity: 0, scale: 0.9 }}
-            animate={{ y: 0, opacity: 1, scale: 1 }}
-            exit={{ y: -40, opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
+          <div
             className="
               bg-white/90 backdrop-blur-xl 
               border border-white/30 
@@ -99,9 +91,8 @@ export default function BookingModal({ open, onClose, eventName = "" }) {
               </div>
 
               {/* Submit Button */}
-              <motion.button
+              <button
                 type="submit"
-                whileTap={{ scale: 0.95 }}
                 className="
                 w-full py-3 
                 bg-[#ff6f61] text-white text-lg font-bold 
@@ -111,11 +102,11 @@ export default function BookingModal({ open, onClose, eventName = "" }) {
               "
               >
                 Submit
-              </motion.button>
+              </button>
             </form>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }
