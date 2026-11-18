@@ -75,7 +75,8 @@
 }
 
 @theme inline {
-  --font-sans: "Geist", "Geist Fallback";
+  --font-sans: "Jost", "Geist", "Geist Fallback";
+  --font-serif: "Marcellus", "Cormorant Garamond", "Playfair Display", Georgia, serif;
   --font-mono: "Geist Mono", "Geist Mono Fallback";
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -121,39 +122,107 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: "Jost", "Geist", sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Marcellus", "Cormorant Garamond", "Playfair Display", Georgia, serif;
   }
 }
 
-/* Add nightclub-specific styling and animations */
+/* Pearl Luxury Theme - Black & Gold */
+:root {
+  --pearl-black: #0a0a0a;
+  --pearl-black-soft: #111111;
+  --pearl-gold: #d4af37;
+  --pearl-gold-light: #e8c547;
+  --pearl-gold-dark: #b8860b;
+  --pearl-gold-gradient: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #f4e5b0 100%);
+  --pearl-gold-text: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #e8c547 100%);
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Neon glow effect for premium feel */
-.neon-glow {
-  text-shadow: 0 0 10px rgba(255, 69, 0, 0.5), 0 0 20px rgba(255, 69, 0, 0.3);
+/* Gold text gradient */
+.gold-text {
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 40%, #f4e5b0 60%, #d4af37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.neon-accent {
-  text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.3);
+/* Gold button */
+.btn-gold {
+  background: linear-gradient(135deg, #b8860b 0%, #d4af37 50%, #e8c547 100%);
+  color: #0a0a0a;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.25);
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #e8c547 0%, #d4af37 50%, #b8860b 100%);
+  box-shadow: 0 6px 30px rgba(212, 175, 55, 0.45);
+  transform: translateY(-1px);
 }
 
-/* Custom scrollbar styling */
+/* Gold border */
+.gold-border {
+  border: 1px solid rgba(212, 175, 55, 0.4);
+}
+.gold-border-thick {
+  border: 2px solid var(--pearl-gold);
+}
+
+/* Gold divider */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--pearl-gold), transparent);
+}
+
+/* Decorative gold corner frame */
+.gold-frame {
+  position: relative;
+}
+.gold-frame::before,
+.gold-frame::after {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-color: var(--pearl-gold);
+  border-style: solid;
+}
+.gold-frame::before {
+  top: -1px;
+  left: -1px;
+  border-width: 2px 0 0 2px;
+}
+.gold-frame::after {
+  bottom: -1px;
+  right: -1px;
+  border-width: 0 2px 2px 0;
+}
+
+/* Shell logo icon */
+.shell-icon {
+  color: var(--pearl-gold);
+}
+
+/* Custom scrollbar - gold */
 ::-webkit-scrollbar {
   width: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: #0a0a0a;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: #ff4500;
+  background: var(--pearl-gold);
   border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: #ff6347;
+  background: var(--pearl-gold-light);
 }
 
 /* Smooth transitions */
@@ -161,4 +230,33 @@ html {
   @apply transition-colors;
 }
 
+/* Gold glow text */
+.gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
+}
 
+/* Card hover lift */
+.card-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(212, 175, 55, 0.15);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* Input styling for dark theme */
+.pearl-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+.pearl-input:focus {
+  border-color: var(--pearl-gold);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  outline: none;
+}
+.pearl-input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}

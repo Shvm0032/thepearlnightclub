@@ -1,26 +1,35 @@
 "use client";
-import Image from "next/image";
+
+import { motion } from "framer-motion";
 
 export default function GalleryHero() {
   return (
-    <section className="relative w-full h-[70vh] md:h-[70vh] overflow-hidden flex items-center justify-center">
-      {/* Background Image */}
-      <Image
-        src="/gallery/bg.jpg" // replace with your image
-        alt="Gallery Background"
-        fill
-        priority
-        className="object-cover object-top"  // 👈 TOP-CENTER POSITION
+    <section className="relative w-full py-24 px-4 bg-[#0a0a0a] overflow-hidden">
+      {/* subtle decorative background */}
+      <div
+        className="absolute inset-0 opacity-[0.07] bg-cover bg-center"
+        style={{ backgroundImage: `url('/gallery/bg.jpg')` }}
       />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-transparent to-[#0a0a0a]" />
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/40"></div>
-
-      {/* Centered Heading */}
-      <div className="relative z-10 text-center">
-        <h1 className="text-white text-4xl md:text-6xl font-extrabold drop-shadow-lg">
-          Our Gallery
-        </h1>
+      <div className="relative z-10 text-center max-w-4xl mx-auto">
+        <motion.h1
+          initial={{ y: 30, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          className="font-serif text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
+        >
+          <span className="gold-text">GALLERY</span>{" "}
+          <span className="text-white">- Moments To Remember</span>
+        </motion.h1>
+        <motion.p
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-white/80 text-lg sm:text-xl mt-5 font-light"
+        >
+          See The Nights Everyone Talks About
+        </motion.p>
       </div>
     </section>
   );

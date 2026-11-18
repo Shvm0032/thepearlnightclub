@@ -4,250 +4,155 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Navbar() {
   const pathname = usePathname();
-
   const [isOpen, setIsOpen] = useState(false);
   const [eventMenu, setEventMenu] = useState(false);
   const [mobileEvent, setMobileEvent] = useState(false);
 
-  const active = "text-[#E86C60]";
-  const inactive = "text-white hover:text-[#E86C60]";
+  const navItems = [
+    { label: "HOME", href: "/" },
+    { label: "BAR", href: "/bar" },
+    { label: "CLUB", href: "/club" },
+    { label: "EVENTS", href: "/events" },
+    { label: "GALLERY", href: "/gallery" },
+    { label: "CONTACT", href: "/contact" },
+    { label: "RESERVE", href: "/reserve" },
+  ];
 
   const isEventActive = pathname.startsWith("/events");
 
+  const isActive = (href) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
-    <nav className="w-full relative z-50 bg-[#020101]">
-
-      {/* TOP BAR */}
-      <div className="w-full bg-gray-100 text-gray-800 text-sm border-b border-orange-500/20">
+    <nav className="w-full sticky top-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-md border-b border-[#d4af37]/15">
+      <div className="py-3 sm:py-4">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col sm:flex-row items-center justify-between py-2 sm:h-10">
-
-            <div className="flex items-center gap-6">
-              <a href="tel:61410036729" className="flex items-center gap-1.5 hover:text-[#E86C60]">
-                <FaPhoneAlt size={14} className="text-[#E86C60]" />
-                <span className="text-xs sm:text-sm">61410036729</span>
-              </a>
-
-              <a href="mailto:thepearl149@hotmail.com" className="flex items-center gap-1.5 hover:text-[#E86C60]">
-                <MdEmail size={14} className="text-[#E86C60]" />
-                <span className="text-xs sm:text-sm">thepearl149@hotmail.com</span>
-              </a>
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* MAIN NAV */}
-      <div className="py-2">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="relative flex items-center justify-between">
+          <div className="flex items-center justify-between gap-4">
 
             {/* LOGO */}
-            <Link href="/">
-              <Image
-                src="/logo-pearl.png"
-                alt="The Pearl Logo"
-                width={140}
-                height={40}
-                className="object-contain"
-              />
+            <Link href="/" className="flex items-center gap-3 shrink-0">
+              <div className="relative">
+                <Image
+                  src="/logo-pearl.png"
+                  alt="The Pearl Logo"
+                  width={56}
+                  height={56}
+                  className="object-contain"
+                  style={{ filter: "drop-shadow(0 0 8px rgba(212,175,55,0.4))" }}
+                />
+              </div>
+              <div className="hidden sm:flex flex-col leading-none">
+                <span className="text-[#d4af37] text-xl sm:text-2xl font-bold tracking-wide font-serif">
+                  THE PEARL
+                </span>
+                <span className="text-white/70 text-[10px] sm:text-xs tracking-[0.25em] uppercase">
+                  Bar | Club | Event
+                </span>
+              </div>
             </Link>
 
             {/* DESKTOP MENU */}
-            <div className="hidden lg:flex items-center gap-12 mx-auto">
-
-              <Link href="/" className={`font-medium text-lg ${pathname === "/" ? active : inactive}`}>
-                Home
-              </Link>
-
-              <Link href="/about" className={`font-medium text-lg ${pathname === "/about" ? active : inactive}`}>
-                About Us
-              </Link>
-
-              <Link href="/gallery" className={`font-medium text-lg ${pathname === "/gallery" ? active : inactive}`}>
-                Gallery
-              </Link>
-
-              {/* DROPDOWN */}
-              <div
-                className="relative"
-                onMouseEnter={() => setEventMenu(true)}
-                onMouseLeave={() => setEventMenu(false)}
-              >
-                <button className={`flex items-center gap-1 font-medium text-lg ${isEventActive ? active : inactive}`}>
-                  Upcoming Events
-                  <ChevronDown size={16} className={`${eventMenu ? "rotate-180" : ""} transition`} />
-                </button>
-
-                <AnimatePresence>
-                  {eventMenu && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 8 }}
-                      className="absolute left-1/2 -translate-x-1/2 top-12 z-50"
-                    >
-                      <div className="bg-white rounded-md shadow-xl py-2 min-w-60 border">
-                        {[
-                          ["Bands", "/events/bands"],
-                          ["Cocktail Carnival", "/events/cocktail-carnival"],
-                          ["Beach Parties", "/events/beach-parties"],
-                          ["Live Music", "/events/live-music"],
-                          ["DJ Night", "/events/dj-night"],
-                        ].map(([label, path]) => (
-                          <Link
-                            key={path}
-                            href={path}
-                            className={`block px-4 py-2 ${
-                              pathname === path
-                                ? "text-[#E86C60] font-semibold"
-                                : "text-gray-800 hover:bg-gray-100"
-                            }`}
-                          >
-                            {label}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
+            <div className="hidden lg:flex items-center gap-7 mx-auto">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`relative font-medium text-sm tracking-wide uppercase transition-colors duration-300 pb-1 ${
+                    isActive(item.href)
+                      ? "text-[#d4af37]"
+                      : "text-white/80 hover:text-[#d4af37]"
+                  }`}
+                >
+                  {item.label}
+                  {isActive(item.href) && (
+                    <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-6 h-[2px] bg-[#d4af37] rounded-full" />
                   )}
-                </AnimatePresence>
-              </div>
+                </Link>
+              ))}
+            </div>
 
-              <Link href="/contact" className={`font-medium text-lg ${pathname === "/contact" ? active : inactive}`}>
-                Contact
+            {/* LOGIN BUTTON */}
+            <div className="hidden lg:flex items-center gap-3 shrink-0">
+              <Link
+                href="/reserve"
+                className="px-5 py-2 border border-[#d4af37]/60 text-[#d4af37] text-sm font-semibold tracking-wide uppercase rounded hover:bg-[#d4af37] hover:text-black transition-all duration-300"
+              >
+                Reserve
+              </Link>
+              <Link
+                href="/login"
+                className="px-5 py-2 text-white/80 text-sm font-semibold tracking-wide uppercase border border-white/20 rounded hover:border-[#d4af37] hover:text-[#d4af37] transition-all duration-300"
+              >
+                Login
               </Link>
             </div>
 
-            {/* CTA */}
-            <Link
-              href="/contact"
-              className="hidden lg:block px-5 py-2 bg-[#E86C60] text-white font-semibold rounded-md hover:bg-[#d05a50]"
-            >
-              Book Now
-            </Link>
-
-            <div className="absolute left-1/2 -translate-x-1/2 lg:hidden">
-              <Image
-                src="/qrcode.webp"
-                alt="Scan to connect with The Pearl"
-                width={48}
-                height={48}
-                className="h-12 w-12 object-contain"
-              />
-            </div>
-
-            <div className="ml-auto lg:hidden">
-              <button className="text-white" onClick={() => setIsOpen(!isOpen)}>
+            {/* MOBILE MENU BUTTON */}
+            <div className="lg:hidden">
+              <button
+                className="text-[#d4af37] p-1"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+              >
                 {isOpen ? <X size={28} /> : <Menu size={28} />}
               </button>
             </div>
           </div>
         </div>
+      </div>
 
-    {/* MOBILE MENU */}
-<AnimatePresence>
-  {isOpen && (
-    <motion.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      className="lg:hidden bg-[#0f0f0f] border-t border-gray-800"
-    >
-      <div className="px-4 py-6 space-y-2">
-
-        {/* NORMAL LINKS */}
-        <Link
-          href="/"
-          className={`block py-2 ${pathname === "/" ? active : "text-white"}`}
-          onClick={() => setIsOpen(false)}
-        >
-          HOME
-        </Link>
-
-        <Link
-          href="/about"
-          className={`block py-2 ${pathname === "/about" ? active : "text-white"}`}
-          onClick={() => setIsOpen(false)}
-        >
-          ABOUT
-        </Link>
-
-        <Link
-          href="/gallery"
-          className={`block py-2 ${pathname === "/gallery" ? active : "text-white"}`}
-          onClick={() => setIsOpen(false)}
-        >
-          GALLERY
-        </Link>
-
-        {/* ✅ EVENTS MOBILE DROPDOWN */}
-        <button
-          onClick={() => setMobileEvent(!mobileEvent)}
-          className="w-full flex items-center justify-between py-2 text-white"
-        >
-          UPCOMING EVENTS
-          <ChevronDown
-            size={18}
-            className={`transition ${mobileEvent ? "rotate-180" : ""}`}
-          />
-        </button>
-
-        <AnimatePresence>
-          {mobileEvent && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="pl-4 space-y-1"
-            >
-              {[
-                ["Bands", "/events/bands"],
-                ["Cocktail Carnival", "/events/cocktail-carnival"],
-                ["Beach Parties", "/events/beach-parties"],
-                ["Live Music", "/events/live-music"],
-                ["DJ Night", "/events/dj-night"],
-              ].map(([label, path]) => (
+      {/* MOBILE MENU */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            className="lg:hidden bg-[#0a0a0a] border-t border-[#d4af37]/15"
+          >
+            <div className="px-4 py-6 space-y-1">
+              {navItems.map((item) => (
                 <Link
-                  key={path}
-                  href={path}
-                  onClick={() => {
-                    setIsOpen(false);
-                    setMobileEvent(false);
-                  }}
-                  className={`block py-2 text-sm ${
-                    pathname === path
-                      ? "text-[#E86C60]"
-                      : "text-gray-300"
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={`block py-3 px-3 rounded text-base font-medium tracking-wide uppercase transition-colors ${
+                    isActive(item.href)
+                      ? "text-[#d4af37] bg-[#d4af37]/10"
+                      : "text-white/80 hover:text-[#d4af37] hover:bg-white/5"
                   }`}
                 >
-                  {label}
+                  {item.label}
                 </Link>
               ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
 
-        <Link
-          href="/contact"
-          className={`block py-2 ${pathname === "/contact" ? active : "text-white"}`}
-          onClick={() => setIsOpen(false)}
-        >
-          CONTACT
-        </Link>
-      </div>
-    </motion.div>
-  )}
-</AnimatePresence>
-
-      </div>
+              <div className="pt-4 flex flex-col gap-3">
+                <Link
+                  href="/reserve"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-center px-5 py-3 border border-[#d4af37]/60 text-[#d4af37] text-sm font-semibold tracking-wide uppercase rounded"
+                >
+                  Reserve
+                </Link>
+                <Link
+                  href="/login"
+                  onClick={() => setIsOpen(false)}
+                  className="w-full text-center px-5 py-3 text-white/80 text-sm font-semibold tracking-wide uppercase border border-white/20 rounded"
+                >
+                  Login
+                </Link>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

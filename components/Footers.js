@@ -1,72 +1,110 @@
 "use client";
 
-import { MdEmail } from "react-icons/md";
-import { FaPhoneAlt } from "react-icons/fa";
+import Link from "next/link";
+import Image from "next/image";
+import { FaWhatsapp, FaInstagram, FaFacebookF, FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 
 export default function Footers() {
   return (
-    <footer className="bg-[#2C2B47] text-gray-300 overflow-x-hidden">
-      {/* ---------- Top Footer ---------- */}
-      <div className="max-w-screen-7xl mx-auto px-4 sm:px-6 lg:px-24 py-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        
-        {/* About Us */}
-        <div className="pr-6">
-          <h3 className="text-white text-xl md:text-2xl font-semibold mb-4">About Us</h3>
-          <p className="text-gray-300 leading-relaxed">
-            Our venue is meticulously designed to create an environment that
-            balances sophistication and excitement, setting the stage for
-            memorable moments…
-          </p>
-        </div>
+    <footer className="bg-[#0a0a0a] text-gray-300 overflow-x-hidden border-t border-[#d4af37]/15">
+      {/* Top Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
 
-        {/* Useful Links */}
-        <div>
-          <h3 className="text-white text-xl font-semibold mb-4">Useful Links</h3>
-          <ul className="space-y-3">
-            <li><a href="/" className="hover:text-white transition">Home</a></li>
-            <li><a href="/about" className="hover:text-white transition">About Us</a></li>
-            <li><a href="/gallery" className="hover:text-white transition">Gallery</a></li>
-            <li><a href="/contact" className="hover:text-white transition">Contact</a></li>
-          </ul>
-        </div>
+          {/* Brand */}
+          <div>
+            <Link href="/" className="flex items-center gap-3 mb-5">
+              <Image
+                src="/logo-pearl.png"
+                alt="The Pearl Logo"
+                width={48}
+                height={48}
+                className="object-contain"
+              />
+              <div className="leading-none">
+                <span className="text-[#d4af37] text-xl font-bold tracking-wide font-serif">
+                  THE PEARL
+                </span>
+                <p className="text-white/50 text-[10px] tracking-[0.25em] uppercase mt-1">
+                  Bar | Club | Event
+                </p>
+              </div>
+            </Link>
+            <p className="text-gray-400 leading-relaxed text-sm">
+              Experience luxury nightlife, curated cocktails, live DJ events, and
+              unforgettable evenings at the city&apos;s most exclusive venue.
+            </p>
+            <div className="flex items-center gap-3 mt-5">
+              <a href="#" aria-label="WhatsApp" className="w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+                <FaWhatsapp size={16} />
+              </a>
+              <a href="#" aria-label="Instagram" className="w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+                <FaInstagram size={16} />
+              </a>
+              <a href="#" aria-label="Facebook" className="w-9 h-9 flex items-center justify-center rounded-full border border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37] hover:text-black transition-all">
+                <FaFacebookF size={16} />
+              </a>
+            </div>
+          </div>
 
-        {/* Events */}
-        <div>
-          <h3 className="text-white text-xl font-semibold mb-4">Upcoming Events</h3>
-          <ul className="space-y-3">
-            <li><a href="/events/bands" className="hover:text-white transition">Bands</a></li>
-            <li><a href="/events/cocktail-carnival" className="hover:text-white transition">Cocktail Carnival</a></li>
-            <li><a href="/events/beach-parties" className="hover:text-white transition">Beach Parties</a></li>
-            <li><a href="/events/live-music" className="hover:text-white transition">Live Music</a></li>
-            <li><a href="/events/dj-night" className="hover:text-white transition">DJ Nights</a></li>
-          </ul>
-        </div>
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-[#d4af37] text-base font-semibold mb-5 tracking-[0.15em] uppercase">
+              Quick Links
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/" className="hover:text-[#d4af37] transition">Home</Link></li>
+              <li><Link href="/bar" className="hover:text-[#d4af37] transition">Bar</Link></li>
+              <li><Link href="/club" className="hover:text-[#d4af37] transition">Club</Link></li>
+              <li><Link href="/events" className="hover:text-[#d4af37] transition">Events</Link></li>
+              <li><Link href="/gallery" className="hover:text-[#d4af37] transition">Gallery</Link></li>
+            </ul>
+          </div>
 
-        {/* Contact */}
-        <div>
-          <h3 className="text-white text-xl font-semibold mb-4">Contact Us</h3>
+          {/* Experiences */}
+          <div>
+            <h3 className="text-[#d4af37] text-base font-semibold mb-5 tracking-[0.15em] uppercase">
+              Experiences
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/reserve" className="hover:text-[#d4af37] transition">VIP Services</Link></li>
+              <li><Link href="/events" className="hover:text-[#d4af37] transition">Overseas Events</Link></li>
+              <li><Link href="/reserve" className="hover:text-[#d4af37] transition">Bottle Service</Link></li>
+              <li><Link href="/reserve" className="hover:text-[#d4af37] transition">Private Celebrations</Link></li>
+              <li><Link href="/contact" className="hover:text-[#d4af37] transition">Reservations</Link></li>
+            </ul>
+          </div>
 
-          <ul className="space-y-3">
-            <li className="flex gap-3">
-              <MdEmail size={18} /> thepearl149@hotmail.com
-            </li>
-            <li className="flex gap-3">
-              <FaPhoneAlt size={18} /> +61 410 036 729
-            </li>
-          </ul>
-
+          {/* Contact */}
+          <div>
+            <h3 className="text-[#d4af37] text-base font-semibold mb-5 tracking-[0.15em] uppercase">
+              Contact
+            </h3>
+            <ul className="space-y-3 text-sm">
+              <li className="flex items-start gap-3">
+                <FaEnvelope size={16} className="text-[#d4af37] mt-1 shrink-0" />
+                <span>thepearl149@hotmail.com</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <FaPhoneAlt size={16} className="text-[#d4af37] mt-1 shrink-0" />
+                <span>+61 410 036 729</span>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* ---------- Bottom Footer ---------- */}
-      <div className="border-t border-[#4E4D6B] bg-[#22213f] py-4">
-        <div className="max-w-screen-7xl mx-auto px-4 sm:px-6 lg:px-24 flex flex-col sm:flex-row justify-between items-center text-gray-200 text-md">
-          <span>© Copyright 2024 <span className="text-[#ffffff] font-bold">The Pearl</span>  | All Rights Reserved.</span>
+      {/* Gold Divider */}
+      <div className="gold-divider mx-auto max-w-7xl" />
 
-          <div className="flex items-center gap-2 mt-2 sm:mt-0">
-            <a href="#" className="hover:text-[#E86C60] transition">Terms of use</a>
-            <span>|</span>
-            <a href="#" className="hover:text-[#E86C60] transition">Privacy policy</a>
+      {/* Bottom Footer */}
+      <div className="py-5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-xs sm:text-sm">
+          <span>© 2024 The Pearl. All rights reserved.</span>
+          <div className="flex items-center gap-4 mt-2 sm:mt-0">
+            <Link href="/contact" className="hover:text-[#d4af37] transition">Privacy Policy</Link>
+            <span className="text-[#d4af37]/40">•</span>
+            <Link href="/contact" className="hover:text-[#d4af37] transition">Terms of Service</Link>
           </div>
         </div>
       </div>

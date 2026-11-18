@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import Link from "next/link"
+import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function UpcomingEvents() {
   const events = [
@@ -23,10 +23,10 @@ export default function UpcomingEvents() {
       category: "Party",
       time: "9:00 PM",
     },
-  ]
+  ];
 
   return (
-    <section className="py-20 px-4 bg-linear-to-b from-black to-gray-900">
+    <section className="py-20 px-4 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,7 +35,7 @@ export default function UpcomingEvents() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-5xl font-bold text-white mb-4 neon-glow">Upcoming Events</h2>
+          <h2 className="text-5xl font-bold text-white mb-4">Upcoming Events</h2>
           <p className="text-gray-400 text-lg">Don't miss out on our exclusive events and experiences</p>
         </motion.div>
 
@@ -47,10 +47,10 @@ export default function UpcomingEvents() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: idx * 0.1 }}
               viewport={{ once: true }}
-              className="bg-linear-to-br from-gray-900 to-black border border-orange-500/30 p-6 rounded-lg hover:border-orange-500 transition group"
+              className="bg-[#111111] border border-[#d4af37]/30 p-6 rounded-lg hover:border-[#d4af37] transition group card-lift"
             >
-              <p className="text-orange-500 font-bold text-sm mb-2">{event.date}</p>
-              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-orange-500 transition">
+              <p className="text-[#d4af37] font-bold text-sm mb-2">{event.date}</p>
+              <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-[#d4af37] transition">
                 {event.title}
               </h3>
               <p className="text-gray-400 mb-4">{event.category}</p>
@@ -68,12 +68,12 @@ export default function UpcomingEvents() {
         >
           <Link
             href="/events"
-            className="inline-block px-8 py-3 bg-orange-500 hover:bg-orange-600 text-black font-bold rounded transition"
+            className="btn-gold inline-block px-8 py-3 rounded font-bold uppercase tracking-wide"
           >
             View All Events
           </Link>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section className="py-20 px-4 bg-[#1b1919]">
+    <section className="py-20 px-4 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
 
@@ -31,10 +31,10 @@ export default function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            {/* Orange Line */}
+            {/* Gold Line */}
             <div className="flex items-center gap-4 mb-4">
-              <span className="w-16 h-[3px] bg-[#e86c60]"></span>
-              <p className="text-[#e86c60] font-semibold tracking-wider uppercase text-md">
+              <span className="w-16 h-[3px] bg-[#d4af37]"></span>
+              <p className="text-[#d4af37] font-semibold tracking-wider uppercase text-md">
                 Know About Us
               </p>
             </div>
@@ -59,8 +59,8 @@ export default function AboutSection() {
             {/* Button */}
             <Link
               href="/about"
-              className="inline-block px-8 py-3 border-2 border-[#e86c60] 
-              text-[#e86c60] hover:bg-[#e86c60] hover:text-black 
+              className="inline-block px-8 py-3 border-2 border-[#d4af37] 
+              text-[#d4af37] hover:bg-[#d4af37] hover:text-black 
               font-bold rounded-md transition duration-300"
             >
               Know More
